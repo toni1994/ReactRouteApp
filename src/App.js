@@ -5,8 +5,20 @@ class App extends Component {
   render() {
     return (
       <div className={style.wrapper}>
-          Hello !!!
+        <div className={style.navigation}> 
+            <div className={style.navigationHeader}> 
+            </div>
+        </div>
+        <div className={style.module}>
+        <div className={style.topBar}> </div>
+        <div className={style.moduleContainer}> 
+        <div className={style.moduleHeader}> </div>
+        <div className={style.moduleBody}> </div>
+        </div>
+        
+          </div>  
       </div>
+      
     );
   }
 }

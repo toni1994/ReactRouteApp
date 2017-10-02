@@ -1,6 +1,69 @@
-.wrapper {
+.navigation {
 	background-color: blue;
 	height: 100%;
+	width: 250px;
 	display: flex;
 	justify-content: center;
+	overflow-y: auto;
+}
+
+.navigationHeader{
+	position: relative;	
+	flex-shrink: 0;
+	display: flex;
+	flex-direction: row;
+	height: 50px;
+	background-color: white;
+	padding: 0px 13px;
+	align-items: center;
+}
+
+html, body {
+	height: 100%;
+}
+
+.module {
+    background-color: green;
+    height: 100%;
+	display: flex;
+	flex: 1;
+	overflow: hidden;
+	flex-direction: column;
+	overflow-y: auto; }
+	
+.wrapper{
+	display: flex;
+	flex-direction: row;
+	height: 100%;
+}
+
+.topBar{
+	position: relative;	
+	flex-shrink: 0;
+	display: flex;
+	flex-direction: row;
+	height: 50px;
+	background-color: yellow;}
+
+.moduleContainer{
+	position: relative;	
+	flex-shrink: 0;
+	display: flex;
+	flex-direction: column;
+	background-color: blue;}
+
+.moduleHeader{
+	display: flex;
+	position: relative;	
+	flex-direction: column;
+	background-color: green;
+	height: 50px;
+}
+
+.moduleBody{
+	display: flex;
+	position: relative;	
+	flex-direction: column;
+	background-color: silver;
+	height: 50px;
 }
