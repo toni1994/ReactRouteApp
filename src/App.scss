@@ -1,5 +1,5 @@
 .navigation {
-	background-color: blue;
+	background-color: black;
 	height: 100%;
 	width: 250px;
 	display: flex;
@@ -14,16 +14,17 @@
 	flex-direction: row;
 	height: 50px;
 	background-color: white;
-	padding: 0px 13px;
+
 	align-items: center;
 }
 
 html, body {
 	height: 100%;
+	margin: 0px;
 }
 
 .module {
-    background-color: green;
+    background-color: #E4E6E6;
     height: 100%;
 	display: flex;
 	flex: 1;
@@ -34,7 +35,7 @@ html, body {
 .wrapper{
 	display: flex;
 	flex-direction: row;
-	height: 100%;
+	height: 100%;	
 }
 
 .topBar{
@@ -43,20 +44,46 @@ html, body {
 	display: flex;
 	flex-direction: row;
 	height: 50px;
-	background-color: yellow;}
+	}
+
+.topBarWrapper {
+	flex: 1 1 0%;
+	padding: 0 30px;
+	display: flex;
+	align-items: center;
+	box-shadow: 0 2px 20px 0 rgba(0,0,0,0.2);
+	background-color: #5972B7;
+  }
+
+.modulName{
+	flex: 8 1 0%;
+	display: flex;
+	color: white;
+}
+
+.topBarIcon{
+	padding-right: 6px;
+	color: white;
+	display: flex;
+}
+
+.topBarProfile{
+	color: white;
+	display: flex;
+}
 
 .moduleContainer{
 	position: relative;	
 	flex-shrink: 0;
 	display: flex;
 	flex-direction: column;
-	background-color: blue;}
+	background-color: silver;}
 
 .moduleHeader{
 	display: flex;
 	position: relative;	
 	flex-direction: column;
-	background-color: green;
+	background-color: lightblue;
 	height: 50px;
 }
 
@@ -65,5 +92,42 @@ html, body {
 	position: relative;	
 	flex-direction: column;
 	background-color: silver;
-	height: 50px;
+	width: 100%;
+	height: 100%;
+}
+
+
+.moduleBodyContainer{
+	height: 80px;
+	width: 100px;
+	display: flex;
+	overflow: hidden;
+	flex-direction: row;
+	border-radius: 10px;
+	background-color: color(white);
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+	&:hover{
+	  cursor: pointer;
+	}
+}
+
+.moduleBodyContent {
+	flex-grow: 1;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 15px 15px 15px 15px;
+  }
+
+.grid {
+	flex: 1 1 0%;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	align-content: flex-start;
+  }
+
+.gridElement{
+	min-width: 260px;
 }
