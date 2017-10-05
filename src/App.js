@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import style from './App.scss';
+import Dotdotdot from 'react-dotdotdot';
 
 const imgLocal = require('./images/helius_logo.png');
 
@@ -36,9 +37,33 @@ class App extends Component {
        
         <div className={style.moduleBody}> 
           <div className={style.grid}>
-            <div className={style.moduleBodyContainer}>   <div className={style.moduleBodyContent}> </div> </div>
-            <div className={style.moduleBodyContainer}>   <div className={style.moduleBodyContent}> </div> </div>
-          </div>
+
+            <div className={style.moduleBodyContainer}>   
+              <div className={style.moduleBodyContent}>
+                  <div className={style.folder}> 
+                      <div className={style.folderText}> 
+                        <div className={style.folderName}> Bar </div> 
+                        <div className={style.numberOfItems}> 6 items </div>
+                      </div> 
+                  </div>
+                  <div className={style.folderProps}> </div>
+              </div> 
+            </div>
+
+            <div className={style.moduleBodyContainer}>   
+              <div className={style.moduleBodyContent}>
+                  <div className={style.folder}> 
+                      <div className={style.folderText}> 
+                        <div className={style.folderName}> Bar </div> 
+                        <div className={style.numberOfItems}> 6 items </div>
+                      </div> 
+
+                  </div>
+                  <div className={style.folderProps}> </div>
+              </div> 
+            </div>
+
+        </div>
         </div>
         </div>
         
