@@ -246,7 +246,7 @@ html, body, :global(#root) {
   display: flex;
   flex-direction: row;
   flex-shrink: 0;
-  padding: 15px; }
+  color: #5972B7; }
 
 .folderName {
   font-weight: 400;

@@ -6,6 +6,7 @@ import Folder from 'react-icons/lib/fa/folder'
 import FaFolderOpenO from 'react-icons/lib/fa/folder-open-o'
 import FaClose from 'react-icons/lib/fa/close'
 import FaCaretDown from 'react-icons/lib/fa/caret-down'
+import FaEllipsisV from 'react-icons/lib/fa/ellipsis-v'
 const imgLocal = require('./images/helius_logo.png');
 
 class App extends Component {
@@ -59,7 +60,7 @@ class App extends Component {
                         <div className={style.numberOfItems}> 6 items </div>
                       </div> 
                   </div>
-                  <div className={style.folderProps}> </div>
+                  <div className={style.folderProps}>  <FaEllipsisV /> </div>
               </div> 
             </div>
 
@@ -73,7 +74,7 @@ class App extends Component {
                       </div> 
 
                   </div>
-                  <div className={style.folderProps}> </div>
+                  <div className={style.folderProps}> <FaEllipsisV /> </div>
               </div> 
             </div>
 
