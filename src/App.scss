@@ -87,7 +87,7 @@ html, body, :global(#root) {
 }
 
 .topBarIcon{
-	padding-right: 6px;
+	padding-right: 14px;
 	color: white;
 	display: flex;
 }
@@ -95,6 +95,23 @@ html, body, :global(#root) {
 .topBarProfile{
 	color: white;
 	display: flex;
+	align-items: center;
+	img{
+		height: 35px;
+		width: 35px;
+		border-radius: 50%;
+	}
+}
+
+.imageProfile{
+	display: flex;
+
+}
+
+.profilName{
+	display: flex;
+	text-align: center;
+	padding-left: 10px;
 }
 
 .moduleContainer{
@@ -110,7 +127,75 @@ html, body, :global(#root) {
 	background-color: white;
 	height: 50px;
 	margin: 10px;
+	border-radius: 6px;
 }
+
+.multiSearchContainer{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: row;
+	border-right: 1px solid #DDD;
+}
+
+.search{
+	display: flex;
+	flex-grow: 1;
+	flex-shrink: 1;
+	flex-basis: 0;
+	align-items: center;
+	border-right: 1px solid #DDD;
+	input{
+		padding-left: 10px;
+		margin-top: 5px;
+		border: none;
+		font-size: 16px;
+		font-family: 'Proxima Nova', sans-serif;
+		font-weight: 400;
+		flex-grow: 1;
+		flex-shrink: 1;
+		display: flex;
+		flex-basis: auto;
+		color: rgb(128, 128, 128);
+		transition: 0.2s;
+		&:focus {
+			outline: none;
+			border: none;
+		  }
+	}
+
+}
+
+.searchIcon{
+	color: gray;
+	padding-left: 10px;
+}
+
+.closeIcon{
+	color: gray;
+	flex-grow: 0;
+	padding-right: 10px;
+}
+
+.searchSection{
+	display: flex;
+	align-items: center;
+	padding: 0 13px;
+	border-right: 1px solid #DDD;
+	span{
+		padding-right: 10px;
+		font-size: 12px;
+		font-weight: bold;
+		color: rgba(0, 0, 0, 0.4);
+	}
+}
+
+.buttonContainer{
+	display: flex;
+	align-items: center;
+	padding: 0px 10px;
+}
+
 
 .moduleBody{
 	display: flex;
@@ -188,6 +273,7 @@ $columns: (
 	flex-direction: row;
 	flex-grow: 1;
 	padding: 15px;
+	align-items: center;
 }
 
 .folderProps{
@@ -216,8 +302,10 @@ $columns: (
 	display: flex;
 	flex-direction: column;
 	padding-left: 10px;
+	align-content: center;
 }
-  
+
+
 
 
 
