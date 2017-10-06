@@ -7,6 +7,7 @@ import FaFolderOpenO from 'react-icons/lib/fa/folder-open-o'
 import FaClose from 'react-icons/lib/fa/close'
 import FaCaretDown from 'react-icons/lib/fa/caret-down'
 import FaEllipsisV from 'react-icons/lib/fa/ellipsis-v'
+import FaPlus from 'react-icons/lib/fa/plus'
 const imgLocal = require('./images/helius_logo.png');
 
 class App extends Component {
@@ -26,7 +27,7 @@ class App extends Component {
         </div>
 
         <div className={style.module}>
-
+          <div className={style.buttonAddContainer}> <div className={style.buttonAdd}> <FaPlus/> </div> </div>
           <div className={style.topBar}>
             <div className={style.topBarWrapper}> 
               <div className={style.modulName}> Area prototyper</div>

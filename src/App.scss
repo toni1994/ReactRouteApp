@@ -305,6 +305,24 @@ $columns: (
 	align-content: center;
 }
 
+.buttonAddContainer{
+	position: absolute;
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+	border: 1px solid #B4B3B9;
+	background-color: white;
+	bottom: 20px;
+	right: 28px;
+}
+
+.buttonAdd{
+	width: 50%;
+	height: 50%;
+	margin-left: 18px;
+	margin-top: 16px;
+
+}
 
 
 
