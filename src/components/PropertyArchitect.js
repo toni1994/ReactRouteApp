@@ -1,5 +1,5 @@
 import React from 'react';
-import style from '../App.scss';
+import style from '../styles/PropertyArchitect.scss';
 import MultiSearch from './MultiSearch'
 
 import FaEllipsisV from 'react-icons/lib/fa/ellipsis-v'
@@ -8,8 +8,8 @@ const PropertyArchitect = () => (
     <div>
          <MultiSearch />
         <div className={style.grid}>
-            <div className={style.moduleBodyContainerArchitect}>   
-                <div className={style.moduleBodyContentArchitect}>
+            <div className={style.moduleBodyContainer}>   
+                <div className={style.moduleBodyContent}>
                     <div className={style.moduleBodyContentImage}> <img src="https://images.trvl-media.com/media/content/expus/graphics/launch/hotel1320x742.jpg" alt="ImageHotel"></img> </div>
                     <div className={style.moduleBodyContentHotelName}>
                         <div className={style.aboutHotel}> 
@@ -22,8 +22,8 @@ const PropertyArchitect = () => (
                 </div>
             </div>
 
-            <div className={style.moduleBodyContainerArchitect}>   
-                <div className={style.moduleBodyContentArchitect}>
+            <div className={style.moduleBodyContainer}>   
+                <div className={style.moduleBodyContent}>
                     <div className={style.moduleBodyContentImage}> <img src="https://taj.tajhotels.com/content/dam/gateway/hotels/Beach-Road,Calicut/images/welcome/Calicut_Welcome-for-Web_4x3-01.jpg" alt="ImageHotel"></img> </div>
                     <div className={style.moduleBodyContentHotelName}>
                         <div className={style.aboutHotel}> 

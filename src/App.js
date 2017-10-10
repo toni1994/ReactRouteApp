@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import style from './App.scss';
+import style from './styles/App.scss'
 
 import Navbar from './components/Navbar';
 import TopBar from './components/TopBar';

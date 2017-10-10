@@ -1,0 +1,21 @@
+html, body, :global(#root) {
+	height: 100%;
+	margin: 0px;	
+}
+
+.module {
+    background-color: #E4E6E6;
+    height: 100%;
+	display: flex;
+	flex: 1;
+	overflow: hidden;
+	flex-direction: column;
+	overflow-y: auto; }
+	
+.wrapper{
+	display: flex;
+	flex-direction: row;
+	height: 100%;
+	font-family: 'Proxima Nova', sans-serif;
+    font-weight: 400;	
+}

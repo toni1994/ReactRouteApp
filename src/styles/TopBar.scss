@@ -1,0 +1,50 @@
+.container{
+	position: relative;	
+	flex-shrink: 0;
+	display: flex;
+	flex-direction: row;
+	height: 50px;
+	}
+
+.wrapper {
+	flex: 1 1 0%;
+	padding: 0 30px;
+	display: flex;
+	align-items: center;
+	box-shadow: 0 2px 20px 0 rgba(0,0,0,0.2);
+	background-color: #5972B7;
+  }
+
+.modulName{
+	flex: 8 1 0%;
+	display: flex;
+	color: white;
+}
+
+.icon{
+	padding-right: 14px;
+	color: white;
+	display: flex;
+}
+
+.profile{
+	color: white;
+	display: flex;
+	align-items: center;
+	img{
+		height: 35px;
+		width: 35px;
+		border-radius: 50%;
+	}
+}
+
+.imageProfile{
+	display: flex;
+
+}
+
+.profilName{
+	display: flex;
+	text-align: center;
+	padding-left: 10px;
+}

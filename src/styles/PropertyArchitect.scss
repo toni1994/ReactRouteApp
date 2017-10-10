@@ -1,0 +1,86 @@
+.grid {
+	flex: 1 1 0%;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	align-content: flex-start;
+  }
+
+$columns: (
+	480px: 2,
+	768px: 3,
+	960px: 4,
+	1350px: 5,
+	1600px: 6,
+  );
+
+.moduleBodyContainer{
+	height: 245px;
+	display: flex;
+	overflow: hidden;
+	flex-direction: row;
+  
+	&:hover{
+	  cursor: pointer;
+	}
+
+	@each $res, $cols in $columns {
+		@media (min-width: $res) {
+		  width: (100% / $cols);
+		  min-width: 240px;
+		  padding: 10px;
+		}
+	  }
+}
+
+.moduleBodyContent {
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+	border-radius: 5px;
+	background-color: white;
+  }
+
+.moduleBodyContentImage{
+	display: flex;
+	img{
+		height: 180px;;
+		width: 100%;
+		border-radius: 5px 5px 0px 0px;
+	}
+}
+
+.moduleBodyContentHotelName{
+	display: flex;
+	flex-direction: row;
+	flex: 1;
+	padding: 15px 5px 15px 20px;
+}
+
+.hotelsName{
+	display: flex;
+	flex-direction: column;
+	font-size: 20px;
+	max-width: 100%;
+	white-space: nowrap;
+}
+
+.hotelsOwner{
+	display: flex;
+	flex-direction: column;
+	font-size: 12px;
+	color: #B4B3B9;
+}
+
+.aboutHotel{
+	max-width: 100%;
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+}
+
+.aboutHotelButton{
+	display: flex;
+	width:30px;
+	align-items: center;
+}

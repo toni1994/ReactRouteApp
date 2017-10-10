@@ -1,5 +1,5 @@
 import React from 'react';
-import style from '../App.scss';
+import style from '../styles/AreaPrototyper.scss';
 import MultiSearch from './MultiSearch'
 
 import FaFolderOpenO from 'react-icons/lib/fa/folder-open-o'
