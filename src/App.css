@@ -287,3 +287,80 @@ html, body, :global(#root) {
 .link {
   color: rgba(255, 255, 255, 0.5);
   text-decoration: none; }
+
+.moduleBodyContainerArchitect {
+  height: 245px;
+  display: flex;
+  overflow: hidden;
+  flex-direction: row; }
+  .moduleBodyContainerArchitect:hover {
+    cursor: pointer; }
+  @media (min-width: 480px) {
+    .moduleBodyContainerArchitect {
+      width: 50%;
+      min-width: 240px;
+      padding: 10px; } }
+  @media (min-width: 768px) {
+    .moduleBodyContainerArchitect {
+      width: 33.33333%;
+      min-width: 240px;
+      padding: 10px; } }
+  @media (min-width: 960px) {
+    .moduleBodyContainerArchitect {
+      width: 25%;
+      min-width: 240px;
+      padding: 10px; } }
+  @media (min-width: 1350px) {
+    .moduleBodyContainerArchitect {
+      width: 20%;
+      min-width: 240px;
+      padding: 10px; } }
+  @media (min-width: 1600px) {
+    .moduleBodyContainerArchitect {
+      width: 16.66667%;
+      min-width: 240px;
+      padding: 10px; } }
+
+.moduleBodyContentArchitect {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  background-color: white; }
+
+.moduleBodyContentImage {
+  display: flex; }
+  .moduleBodyContentImage img {
+    height: 180px;
+    width: 100%;
+    border-radius: 5px 5px 0px 0px; }
+
+.moduleBodyContentHotelName {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  padding: 15px 5px 15px 20px; }
+
+.hotelsName {
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+  max-width: 100%;
+  white-space: nowrap; }
+
+.hotelsOwner {
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  color: #B4B3B9; }
+
+.aboutHotel {
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1; }
+
+.aboutHotelButton {
+  display: flex;
+  width: 30px;
+  align-items: center; }

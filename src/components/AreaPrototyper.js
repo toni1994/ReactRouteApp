@@ -1,24 +1,13 @@
 import React from 'react';
 import style from '../App.scss';
+import MultiSearch from './MultiSearch'
 
-import Search from 'react-icons/lib/fa/search'
 import FaFolderOpenO from 'react-icons/lib/fa/folder-open-o'
-import FaClose from 'react-icons/lib/fa/close'
-import FaCaretDown from 'react-icons/lib/fa/caret-down'
 import FaEllipsisV from 'react-icons/lib/fa/ellipsis-v'
 
 const AreaProtoyper = () => (
     <div className={style.moduleContainer}> 
-      <div className={style.moduleHeader}>
-        <div className={style.multiSearchContainer}>
-          <div className={style.search}> <div className={style.searchIcon}> <Search /> </div> <input placeholder="Search folders by name"/> <div className={style.closeIcon}> <FaClose /> </div> </div>
-          <div className={style.searchSection}> <span> SORT BY  </span> Name / ASC </div>
-          <div className={style.searchSection}> <span> FILTERS  </span> 0 active </div>
-          <div className={style.buttonContainer}>  <FaCaretDown/> </div>
-        </div>
-        
-      </div>
-
+      <MultiSearch />
       <div className={style.moduleBody}> 
         <div className={style.grid}>
 
