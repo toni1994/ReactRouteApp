@@ -9,6 +9,7 @@ import FaEllipsisV from 'react-icons/lib/fa/ellipsis-v'
 export class AreaPrototyper extends React.Component{
   constructor(props){
       super(props);
+      console.log("");
   };
 
   render(){

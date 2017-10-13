@@ -1,0 +1,31 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1; }
+
+.header {
+  display: flex;
+  flex-shrink: 0;
+  height: 70px;
+  padding: 0 19px;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.11); }
+  .header p {
+    margin-left: 20px;
+    font-size: 22px;
+    color: black; }
+
+.body {
+  flex: 1;
+  padding: 15px 20px; }
+
+.footer {
+  display: flex;
+  flex-shrink: 0;
+  height: 75px;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 20px; }
+  .footer > :first-child {
+    margin-right: 22px; }
