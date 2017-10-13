@@ -1,7 +1,11 @@
 import React from 'react';
 import style from '../styles/PropertyArchitect.scss';
 import { connect } from 'react-redux';
-import MultiSearch from './MultiSearch'
+import { bindActionCreators } from 'redux';
+import MultiSearch from './MultiSearch';
+import Panel from './Panel';
+import NewButton from './NewButton';
+import { openModalNewProperty } from '../redux/actions/index'
 
 import FaEllipsisV from 'react-icons/lib/fa/ellipsis-v'
 
@@ -16,8 +20,12 @@ export class PropertyArchitect extends React.Component{
 
     render(){
         return (
-            <div>
+           <div className={style.body}>
             <MultiSearch />
+            <Panel 
+                isOpen={this.props.isOpen} />
+            <NewButton 
+                open={this.props.actions.openModalNewProperty} />
            <div className={style.grid}>
                { this.props.properties.map((item,index)=>{
                     return ( 
@@ -44,7 +52,19 @@ export class PropertyArchitect extends React.Component{
 function mapStateToProps(state){
     return {
         properties: state.PropertyArchitect.properties,
+        isOpen: state.PropertyArchitect.isOpen,
     }
 }
 
-export default connect(mapStateToProps,null)(PropertyArchitect);
+function mapDispatchToProps(dispatch) {
+    return {
+      actions: bindActionCreators(
+        {
+            openModalNewProperty
+        },
+        dispatch,
+      ),
+    };
+  }
+
+export default connect(mapStateToProps,mapDispatchToProps)(PropertyArchitect);

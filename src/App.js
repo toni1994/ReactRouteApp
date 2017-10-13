@@ -3,7 +3,6 @@ import style from './styles/App.scss'
 
 import Navbar from './components/Navbar';
 import TopBar from './components/TopBar';
-import NewButton from './components/NewButton';
 import Routes from './routes';
 
 class App extends Component {
@@ -13,7 +12,6 @@ class App extends Component {
       <div className={style.wrapper}>
         <Navbar />
           <div className={style.module}>
-            <NewButton />
             <TopBar />
             <Routes />
           </div>

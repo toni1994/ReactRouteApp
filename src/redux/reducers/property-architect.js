@@ -1,3 +1,5 @@
+import { OPEN_MODAL_NEW_PROPERTY } from '../actions/index';
+
 const initialState = {
     properties: [{
         id: 0,
@@ -30,9 +32,18 @@ const initialState = {
         managerName: "Ante Antic",
         idProperties: 1
     }
-    ]
+    ],
+    isOpen: false,
 }
 
 export default function reducer(state = initialState , action){
-    return state;
+    switch(action.type){
+    case OPEN_MODAL_NEW_PROPERTY:
+        return {
+            ...state,
+            isOpen: true,
+        }
+    default: 
+    return state
+    }
 }
