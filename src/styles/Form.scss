@@ -39,3 +39,46 @@
       }
 }
 
+.inputContainer{
+    display: flex;
+    height: 50px;
+    width: 100%;
+    flex: 0 1 auto;
+    flex-direction: column;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.input{
+    display: flex;
+    input {
+        
+        width: 50%;
+        height: 20px;
+        margin: 0;
+    
+        border: 1px solid transparent;
+        border-bottom: 1px solid;
+        font-weight: 300;
+        font-size: 12px;
+        transition: 0.2s;
+    
+        &:focus {
+          outline: none;
+          border-color: color(blue);
+        }
+      }
+}
+
+.error{
+    margin-top: 5px;
+    display: flex;
+    color:red;
+}
+   
+.label{
+    display: flex;
+}
+
+
+
