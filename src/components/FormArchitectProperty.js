@@ -10,8 +10,8 @@ const validate = values => {
     if (!values.propertyName) {
       errors.propertyName = 'Required';
     }
-    if (!values.yearOpened) {
-      errors.yearOpened = 'Required';
+    if (!values.managerName) {
+      errors.managerName = 'Required';
     }
     if (!values.address) {
         errors.address = 'Required';
@@ -38,21 +38,20 @@ const renderFormField = ({
     </div>
   )
 
-
 const FormPropArchitectProperty = (props) => (
-    <form className={style.form}>
+    <form className={style.form} onSubmit={props.handleSubmit}>
         <div className={style.header}>
             <FaBuildingO />
             <p> Add Property </p>
         </div>
         <div className={style.body}>
                 <Field name="propertyName" component={renderFormField} type="text" label="Property name" />
-                <Field name="yearOpened" component={renderFormField} type="text" label="Year opened" />
+                <Field name="managerName" component={renderFormField} type="text" label="Manager Name" />
                 <Field name="address" component={renderFormField} type="text" label="Address" />
                 <Field name="phone" component={renderFormField} type="text" label="Phone" />
         </div>
         <div className={style.footer}>
-            <FormButton notPrimary> CANCEL
+            <FormButton notPrimary onClick={props.onCancel}> CANCEL
             </FormButton>
             <FormButton type="submit"> ADD PROPERTY
             </FormButton>

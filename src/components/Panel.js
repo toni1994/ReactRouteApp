@@ -6,7 +6,9 @@ import style from '../styles/Panel.scss';
 
 const Panel = (props) => (
     <div className={classNames([style.container, !props.isOpen && style.close])}>
-        <FormArchitectProperty />
+        <FormArchitectProperty 
+          onSubmit={props.handleSubmitProperty}
+          onCancel={props.closeFormPropertyArchitect} />
     </div>
 )
 
