@@ -16,6 +16,10 @@ export class PropertyArchitect extends React.Component{
         this.closeFormPropertyArchitect=this.closeFormPropertyArchitect.bind(this);
     };
 
+    componentWillUnmount(){
+        this.props.actions.closeModalNewProperty();
+    }
+
     handleSubmitProperty(newPropertyData){
         this.props.actions.addNewProperty(newPropertyData);
     }
@@ -26,12 +30,13 @@ export class PropertyArchitect extends React.Component{
     render(){
         return (
            <div className={style.body}>
-            <MultiSearch />
+            <MultiSearch ></MultiSearch >
             <Panel 
-                isOpen={this.props.isOpen}
+                isOpen={this.props.form !== undefined}
                 handleSubmitProperty={this.handleSubmitProperty}
                 closeFormPropertyArchitect={this.closeFormPropertyArchitect}
-            />
+                type={"NewProperty"}
+            /> 
             <NewButton 
                 open={this.props.actions.openModalNewProperty}
                  />
@@ -61,7 +66,7 @@ export class PropertyArchitect extends React.Component{
 function mapStateToProps(state){
     return {
         properties: state.PropertyArchitect.properties,
-        isOpen: state.PropertyArchitect.isOpen,
+        form: state.PropertyArchitect.form,
     }
 }
 

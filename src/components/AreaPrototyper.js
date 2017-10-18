@@ -1,7 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import style from '../styles/AreaPrototyper.scss';
-import MultiSearch from './MultiSearch'
+import MultiSearch from './MultiSearch';
+import Panel from './Panel';
+import NewButton from './NewButton';
+import { bindActionCreators } from 'redux';
+import { openModalNewFolder, closeModalNewFolder, addNewPrototyper } from '../redux/actions/index'
 
 import FaFolderOpenO from 'react-icons/lib/fa/folder-open-o'
 import FaEllipsisV from 'react-icons/lib/fa/ellipsis-v'
@@ -9,14 +13,35 @@ import FaEllipsisV from 'react-icons/lib/fa/ellipsis-v'
 export class AreaPrototyper extends React.Component{
   constructor(props){
       super(props);
-      console.log("");
+      this.closeFormAreaPrototyper=this.closeFormAreaPrototyper.bind(this);
+      this.handleSubmitPrototyper=this.handleSubmitPrototyper.bind(this);
   };
+
+  
+  componentWillUnmount(){
+    this.props.actions.closeModalNewFolder();
+}
+
+  handleSubmitPrototyper(newPrototyperData){
+    this.props.actions.addNewPrototyper(newPrototyperData);
+}
+
+  closeFormAreaPrototyper(){
+    this.props.actions.closeModalNewFolder();
+}
 
   render(){
     return (
-      <div className={style.moduleContainer}> 
-      <MultiSearch />
-      <div className={style.moduleBody}> 
+   
+      <div className={style.moduleBody}>
+         <MultiSearch />
+          <Panel 
+                isOpen={this.props.form !== undefined}
+                handleSubmitPrototyper={this.handleSubmitPrototyper}
+                closeFormAreaPrototyper={this.closeFormAreaPrototyper}
+                type={"NewFolder"}
+          />
+         <NewButton  open={this.props.actions.openModalNewFolder} />
         <div className={style.grid}>
           { this.props.folders.map((item,index) => {
             return ( 
@@ -35,7 +60,6 @@ export class AreaPrototyper extends React.Component{
           })}
       </div>
       </div>
-    </div>
   )
   }   
 }
@@ -44,7 +68,21 @@ export class AreaPrototyper extends React.Component{
 function mapStateToProps(state){
   return {
       folders: state.AreaPrototyper.folders,
+      form: state.AreaPrototyper.form,
   }
 }
 
-export default connect(mapStateToProps,null)(AreaPrototyper);
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(
+      {
+        openModalNewFolder,
+        closeModalNewFolder,
+        addNewPrototyper
+      },
+      dispatch,
+    ),
+  };
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(AreaPrototyper);

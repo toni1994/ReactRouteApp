@@ -33,7 +33,7 @@ const initialState = {
         idProperties: 1
     }
     ],
-    isOpen: false,
+    form: undefined,
 }
 
 export default function reducer(state = initialState , action){
@@ -41,12 +41,12 @@ export default function reducer(state = initialState , action){
     case OPEN_MODAL_NEW_PROPERTY:
         return {
             ...state,
-            isOpen: true,
+            form: 'property',
         }
     case CLOSE_MODAL_NEW_PROPERTY:
     return {
             ...state,
-            isOpen: false,
+            form: undefined,
     }
     case ADD_NEW_PROPERTY:
     return {
@@ -58,7 +58,7 @@ export default function reducer(state = initialState , action){
                     imagePath: "http://api.helius.proficodev.com/public/uploads/building/436b8a0898b01484144240789.jpeg",
                     managerName: action.payload.managerName,
                 }],
-                isOpen: false,
+                form: undefined,
     }
     default: 
     return state
