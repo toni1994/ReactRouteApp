@@ -39,17 +39,7 @@ export class MultiSearch extends React.Component{
           <div className={style.searchSection}> <span> FILTERS  </span> 0 active </div>
       <div className={style.buttonContainer} onClick={this.openDropDown}> { this.state.open ? <FaCaretUp /> : <FaCaretDown/> } </div>
         </div>
-        { (this.state.open) && <div className={style.dropdown}> 
-          <div className={style.section}>
-            <div className={style.sectionHeader}>
-              <span>{'Sort by'}</span>
-            </div>   
-              <span className={style.value}>  </span>
-            </div> 
-             <div className={style.sortOption}>   </div>  
-            </div>
-        }    
-           <CheckBox updateSort={this.props.updateSort} sort={this.props.sort}/>
+           { (this.state.open) && <div className={style.sortDropDown}> <CheckBox updateSort={this.props.updateSort} sort={this.props.sort}/> </div>}
       </div>
       )
     }

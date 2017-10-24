@@ -97,3 +97,7 @@
   flex-direction: row;
   height: 200px;
   align-items: center; }
+
+.sortDropDown {
+  padding-top: 5px;
+  padding-bottom: 15px; }
