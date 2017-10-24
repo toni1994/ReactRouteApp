@@ -28,3 +28,11 @@ export const changeSortAreaPrototyperFolder = createAction(CHANGE_SORT_AREA_PROT
 export const CHANGE_SEARCH_AREA_PROTOTYPER_FOLDER = 'CHANGE_SEARCH_AREA_PROTOTYPER_FOLDER';
 export const changeSerachAreaPrototyperFolder = createAction(CHANGE_SEARCH_AREA_PROTOTYPER_FOLDER);
 
+
+export const CHANGE_SORT_PROPERTY_ARCHITECT = 'CHANGE_SORT_PROPERTY_ARCHITECT';
+export const changeSortPropertyArchitect = createAction(CHANGE_SORT_PROPERTY_ARCHITECT);
+
+export const CHANGE_SEARCH_PROPERTY_ARCHITECT = 'CHANGE_SEARCH_PROPERTY_ARCHITECT';
+export const changeSearchPropertyArchitect = createAction(CHANGE_SEARCH_PROPERTY_ARCHITECT);
+
+

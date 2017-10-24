@@ -43,13 +43,13 @@ export class MultiSearch extends React.Component{
           <div className={style.section}>
             <div className={style.sectionHeader}>
               <span>{'Sort by'}</span>
-            </div>
+            </div>   
               <span className={style.value}>  </span>
             </div> 
              <div className={style.sortOption}>   </div>  
             </div>
         }    
-        <CheckBox updateSort={this.props.updateSort} sort={this.props.sort}/>
+           <CheckBox updateSort={this.props.updateSort} sort={this.props.sort}/>
       </div>
       )
     }

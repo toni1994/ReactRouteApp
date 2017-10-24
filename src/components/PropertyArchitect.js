@@ -5,7 +5,9 @@ import { bindActionCreators } from 'redux';
 import MultiSearch from './MultiSearch';
 import Panel from './Panel';
 import NewButton from './NewButton';
-import { openModalNewProperty, closeModalNewProperty, addNewProperty } from '../redux/actions/index'
+import { openModalNewProperty, closeModalNewProperty, addNewProperty, changeSortPropertyArchitect, changeSearchPropertyArchitect } from '../redux/actions/index'
+
+import getSort from '../utilis/sort';
 
 import FaEllipsisV from 'react-icons/lib/fa/ellipsis-v'
 
@@ -14,6 +16,8 @@ export class PropertyArchitect extends React.Component{
         super(props);
         this.handleSubmitProperty=this.handleSubmitProperty.bind(this);
         this.closeFormPropertyArchitect=this.closeFormPropertyArchitect.bind(this);
+        this.updateSort=this.updateSort.bind(this);
+        this.changeInputValue= this.changeInputValue.bind(this);
     };
 
     componentWillUnmount(){
@@ -27,10 +31,19 @@ export class PropertyArchitect extends React.Component{
     closeFormPropertyArchitect(){
         this.props.actions.closeModalNewProperty();
     }
+
+    updateSort(newValue){
+        this.props.actions.changeSortPropertyArchitect(newValue)
+    }
+      
+    changeInputValue(newValue){
+          this.props.actions.changeSearchPropertyArchitect(newValue)
+    }
+
     render(){
         return (
            <div className={style.body}>
-            <MultiSearch ></MultiSearch >
+            <MultiSearch updateSort={this.updateSort} sort={this.props.sortFolder} changeInputValue={this.changeInputValue} searchValue={this.props.searchValue} />
             <Panel 
                 isOpen={this.props.form !== undefined}
                 handleSubmitProperty={this.handleSubmitProperty}
@@ -65,8 +78,10 @@ export class PropertyArchitect extends React.Component{
 
 function mapStateToProps(state){
     return {
-        properties: state.PropertyArchitect.properties,
+        properties: getSort(state.PropertyArchitect.properties,state.FilterPropertyArchitect.property.sort.direction,state.FilterPropertyArchitect.property.search),   
         form: state.PropertyArchitect.form,
+        sortFolder: state.FilterPropertyArchitect.property.sort.direction,
+        searchValue: state.FilterPropertyArchitect.property.search,
     }
 }
 
@@ -77,6 +92,8 @@ function mapDispatchToProps(dispatch) {
             openModalNewProperty,
             closeModalNewProperty,
             addNewProperty,
+            changeSortPropertyArchitect,
+            changeSearchPropertyArchitect
         },
         dispatch,
       ),
