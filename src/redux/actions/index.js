@@ -20,3 +20,11 @@ export const closeModalNewFolder = createAction(CLOSE_MODAL_NEW_FOLDER);
 
 export const ADD_NEW_PROTOTYPER = 'ADD_NEW_PROTOTYPER';
 export const addNewPrototyper = createAction(ADD_NEW_PROTOTYPER);
+
+
+export const CHANGE_SORT_AREA_PROTOTYPER_FOLDER = 'CHANGE_SORT_AREA_PROTOTYPER_FOLDER';
+export const changeSortAreaPrototyperFolder = createAction(CHANGE_SORT_AREA_PROTOTYPER_FOLDER);
+
+export const CHANGE_SEARCH_AREA_PROTOTYPER_FOLDER = 'CHANGE_SEARCH_AREA_PROTOTYPER_FOLDER';
+export const changeSerachAreaPrototyperFolder = createAction(CHANGE_SEARCH_AREA_PROTOTYPER_FOLDER);
+
