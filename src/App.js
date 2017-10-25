@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import style from './styles/App.scss'
+import { withRouter } from 'react-router'
+import { connect} from 'react-redux'
 
 import Navbar from './components/Navbar';
 import TopBar from './components/TopBar';
@@ -8,6 +10,7 @@ import Routes from './routes';
 class App extends Component {
  
   render() {
+    console.log(this.props)
     return (
       <div className={style.wrapper}>
         <Navbar />
@@ -20,4 +23,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect()(withRouter (App));

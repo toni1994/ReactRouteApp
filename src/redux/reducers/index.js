@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-//import { routerReducer } from 'react-router-redux';
+import { routerReducer } from 'react-router-redux';
 import { reducer as formReducer} from 'redux-form';
 
 import AreaPrototyper from './area-prototyper';
@@ -8,7 +8,7 @@ import FiterAreaPrototyper from './filter-area-prototyper';
 import FilterPropertyArchitect from './filter-property-architect';
 
 const rootReducer = combineReducers ({
-    //routing: routerReducer,
+    router: routerReducer,
     form: formReducer,
     AreaPrototyper,
     PropertyArchitect,
