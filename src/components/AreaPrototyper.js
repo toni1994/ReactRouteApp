@@ -11,6 +11,7 @@ import getSort from '../utilis/sort';
 
 import FaFolderOpenO from 'react-icons/lib/fa/folder-open-o'
 import FaEllipsisV from 'react-icons/lib/fa/ellipsis-v'
+import { withRouter } from 'react-router';
 
 export class AreaPrototyper extends React.Component{
   constructor(props){
@@ -101,4 +102,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(AreaPrototyper);
+export default connect(mapStateToProps,mapDispatchToProps)( withRouter (AreaPrototyper));

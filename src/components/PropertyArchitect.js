@@ -10,6 +10,7 @@ import { openModalNewProperty, closeModalNewProperty, addNewProperty, changeSort
 import getSort from '../utilis/sort';
 
 import FaEllipsisV from 'react-icons/lib/fa/ellipsis-v'
+import { withRouter } from 'react-router';
 
 export class PropertyArchitect extends React.Component{
     constructor(props){
@@ -100,4 +101,4 @@ function mapDispatchToProps(dispatch) {
     };
   }
 
-export default connect(mapStateToProps,mapDispatchToProps)(PropertyArchitect);
+export default connect(mapStateToProps,mapDispatchToProps)(withRouter (PropertyArchitect));

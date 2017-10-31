@@ -3,13 +3,18 @@ import Home from './components/Home'
 import AreaPrototyper from './components/AreaPrototyper'
 import PropertyArchitect from './components/PropertyArchitect'
 import { Switch, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 const Routes = props => (
-    <Switch>
+    <ConnectedSwitch>
       <Route exact path='/' component={Home}/>
       <Route path='/property-architect' component={PropertyArchitect}/>
       <Route path='/area-prototyper' component={AreaPrototyper}/>
-    </Switch>
+    </ConnectedSwitch>
 )
+
+const ConnectedSwitch = connect(state => ({
+	location: state.location
+}))(Switch);
 
 export default Routes;

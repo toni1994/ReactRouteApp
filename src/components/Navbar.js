@@ -16,10 +16,12 @@ class Navbar extends Component {
 
   aa(){
     history.push('/area-prototyper');
+    console.log(window.history);
   }
 
   bb(){
     history.push('/property-architect');
+    console.log(window.history);
   }
   
   
