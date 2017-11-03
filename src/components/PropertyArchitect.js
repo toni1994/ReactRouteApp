@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import MultiSearch from './MultiSearch';
 import Panel from './Panel';
 import NewButton from './NewButton';
-import { openModalNewProperty, closeModalNewProperty, addNewProperty, changeSortPropertyArchitect, changeSearchPropertyArchitect } from '../redux/actions/index'
+import { openModalNewProperty, closeModalNewProperty, addNewProperty, changeSortPropertyArchitect, changeSearchPropertyArchitect, selectedProperty } from '../redux/actions/index'
 import { push } from 'react-router-redux';
 import { history } from '../services/index' 
 import getSort from '../utilis/sort';
@@ -58,7 +58,7 @@ export class PropertyArchitect extends React.Component{
            <div className={style.grid}>
                { this.props.properties.map((item,index)=>{
                     return ( 
-                    <div className={style.moduleBodyContainer} key={index} onClick={()=>{history.push(`/property-architect/${item.id}`);}}>   
+                    <div className={style.moduleBodyContainer} key={index} onClick={()=>{history.push(`/property-architect/${item.id}`);this.props.actions.selectedProperty(item.id)}}>   
                     <div className={style.moduleBodyContent}>
                         <div className={style.moduleBodyContentImage}> <img src={item.imagePath} alt="ImageHotel"></img> </div>
                         <div className={style.moduleBodyContentHotelName}>
@@ -95,7 +95,8 @@ function mapDispatchToProps(dispatch) {
             closeModalNewProperty,
             addNewProperty,
             changeSortPropertyArchitect,
-            changeSearchPropertyArchitect
+            changeSearchPropertyArchitect,
+            selectedProperty
         },
         dispatch,
       ),

@@ -20,16 +20,16 @@ export class Panel extends React.Component {
               onSubmit={this.props.handleSubmitProperty}
               onCancel={this.props.closeFormPropertyArchitect} />
             break;
-        case 'NewBuilding':
+          case 'NewBuilding':
             form = <FormArchitectPropertyBuildings 
             onSubmit={this.props.handleSubmitProperty}
             onCancel={this.props.closeFormPropertyArchitect} />
-          break;
+            break;
           case 'NewFolder':
                 form = <FormFolderPrototyper 
                 onSubmit={this.props.handleSubmitPrototyper}
                 onCancel={this.props.closeFormAreaPrototyper} />
-          break;
+            break;
           default:
             form = <div>{'BYE'}</div>;
             break;

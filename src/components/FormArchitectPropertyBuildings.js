@@ -8,7 +8,7 @@ import style from '../styles/Form.scss';
 const validate = values => {
     const errors = {};
     if (!values.propertyName) {
-      errors.propertyName = 'Required';
+      errors.BuildingName = 'Required';
     }
     if (!values.managerName) {
       errors.managerName = 'Required';
@@ -45,7 +45,7 @@ const FormArchitectPropertyBuildings = (props) => (
             <p> Add Building </p>
         </div>
         <div className={style.body}>
-                <Field name="BuildingName" component={renderFormField} type="text" label="Property name" />
+                <Field name="BuildingName" component={renderFormField} type="text" label="Building name" />
                 <Field name="managerName" component={renderFormField} type="text" label="Manager Name" />
                 <Field name="address" component={renderFormField} type="text" label="Address" />
                 <Field name="phone" component={renderFormField} type="text" label="Phone" />

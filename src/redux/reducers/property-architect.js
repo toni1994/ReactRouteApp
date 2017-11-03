@@ -1,4 +1,8 @@
-import { OPEN_MODAL_NEW_PROPERTY, CLOSE_MODAL_NEW_PROPERTY, ADD_NEW_PROPERTY, ADD_NEW_PROPERTY_BUILDINGS } from '../actions/index';
+import { OPEN_MODAL_NEW_PROPERTY, 
+    CLOSE_MODAL_NEW_PROPERTY, 
+    ADD_NEW_PROPERTY, 
+    ADD_NEW_PROPERTY_BUILDINGS,
+    SELECTED_PROPERTY } from '../actions/index';
 
 const initialState = {
     properties: [{
@@ -34,6 +38,8 @@ const initialState = {
     }
     ],
     form: undefined,
+    selectedProperty: undefined,
+    selectedBuildings: undefined,
 }
 
 export default function reducer(state = initialState , action){
@@ -71,7 +77,13 @@ export default function reducer(state = initialState , action){
                     managerName: action.payload.managerName,
                 }],
                 form: undefined,
+    }  
+    case SELECTED_PROPERTY:
+    return {
+            ...state,
+            selectedProperty: action.payload,
     }
+
     default: 
     return state
     }

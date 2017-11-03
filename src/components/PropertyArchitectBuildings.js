@@ -54,8 +54,8 @@ export class PropertyArchitectBuildings extends React.Component{
             /> 
             <NewButton 
                 open={this.props.actions.openModalNewProperty}
-                 />
-           <div className={style.grid}>
+                 /> {console.log(this.props.selectedProperty)}
+           <div className={style.grid}> 
                { this.props.buildings.map((item,index)=>{
                     return ( 
                     <div className={style.moduleBodyContainer} key={index} >   
@@ -84,6 +84,7 @@ function mapStateToProps(state){
         form: state.PropertyArchitect.form,
         sortFolder: state.FilterPropertyArchitect.buildings.sort.direction,
         searchValue: state.FilterPropertyArchitect.buildings.search,
+        selectedProperty: state.PropertyArchitect.selectedProperty,
     }
 }
 
@@ -95,7 +96,7 @@ function mapDispatchToProps(dispatch) {
             closeModalNewProperty,
             addNewBuildings,
             changeSortPropertyArchitectBuildings,
-            changeSearchPropertyArchitectBuildings
+            changeSearchPropertyArchitectBuildings,
         },
         dispatch,
       ),

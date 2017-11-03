@@ -12,7 +12,8 @@ export const addNewProperty = createAction(ADD_NEW_PROPERTY);
 export const ADD_NEW_PROPERTY_BUILDINGS = 'ADD_NEW_PROPERTY_BUILDINGS';
 export const addNewBuildings = createAction(ADD_NEW_PROPERTY_BUILDINGS);
 
-
+export const SELECTED_PROPERTY = 'SELECTED_PROPERTY';
+export const selectedProperty = createAction(SELECTED_PROPERTY);
 
 
 export const OPEN_MODAL_NEW_FOLDER = 'OPEN_MODAL_NEW_FOLDER';
