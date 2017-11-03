@@ -3,6 +3,7 @@ import style from '../styles/Navbar.scss';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import { history } from '../services/index'
+import { withRouter } from 'react-router-dom'
 
 const imgLocal = require('../images/helius_logo.png');
 
@@ -53,4 +54,4 @@ const mapDispatchToProps = (dispatch , ownPropS) =>({
   }
 })
 
-export default connect(state, mapDispatchToProps)(Navbar);
+export default withRouter(connect(state, mapDispatchToProps)(Navbar));

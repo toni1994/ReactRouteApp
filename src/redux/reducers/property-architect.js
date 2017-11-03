@@ -1,4 +1,4 @@
-import { OPEN_MODAL_NEW_PROPERTY, CLOSE_MODAL_NEW_PROPERTY, ADD_NEW_PROPERTY } from '../actions/index';
+import { OPEN_MODAL_NEW_PROPERTY, CLOSE_MODAL_NEW_PROPERTY, ADD_NEW_PROPERTY, ADD_NEW_PROPERTY_BUILDINGS } from '../actions/index';
 
 const initialState = {
     properties: [{
@@ -55,6 +55,18 @@ export default function reducer(state = initialState , action){
                 {
                     id: state.properties.length + 1,
                     name: action.payload.propertyName,
+                    imagePath: "http://api.helius.proficodev.com/public/uploads/building/436b8a0898b01484144240789.jpeg",
+                    managerName: action.payload.managerName,
+                }],
+                form: undefined,
+    }
+    case ADD_NEW_PROPERTY_BUILDINGS:
+    return {
+            ...state,
+            buildings :[...state.buildings, 
+                {
+                    id: state.buildings.length + 1,
+                    name: action.payload.BuildingName,
                     imagePath: "http://api.helius.proficodev.com/public/uploads/building/436b8a0898b01484144240789.jpeg",
                     managerName: action.payload.managerName,
                 }],

@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import MultiSearch from './MultiSearch';
 import Panel from './Panel';
 import NewButton from './NewButton';
-import { openModalNewProperty, closeModalNewProperty, addNewProperty, changeSortPropertyArchitect, changeSearchPropertyArchitect } from '../redux/actions/index'
+import { openModalNewProperty, closeModalNewProperty, addNewBuildings, changeSortPropertyArchitectBuildings, changeSearchPropertyArchitectBuildings } from '../redux/actions/index'
 import { push } from 'react-router-redux';
 import { history } from '../services/index' 
 import getSort from '../utilis/sort';
@@ -13,7 +13,7 @@ import getSort from '../utilis/sort';
 import FaEllipsisV from 'react-icons/lib/fa/ellipsis-v'
 import { withRouter } from 'react-router';
 
-export class PropertyArchitect extends React.Component{
+export class PropertyArchitectBuildings extends React.Component{
     constructor(props){
         super(props);
         this.handleSubmitProperty=this.handleSubmitProperty.bind(this);
@@ -27,7 +27,7 @@ export class PropertyArchitect extends React.Component{
     }
 
     handleSubmitProperty(newPropertyData){
-        this.props.actions.addNewProperty(newPropertyData);
+        this.props.actions.addNewBuildings(newPropertyData);
     }
 
     closeFormPropertyArchitect(){
@@ -35,11 +35,11 @@ export class PropertyArchitect extends React.Component{
     }
 
     updateSort(newValue){
-        this.props.actions.changeSortPropertyArchitect(newValue)
+        this.props.actions.changeSortPropertyArchitectBuildings(newValue)
     }
       
     changeInputValue(newValue){
-          this.props.actions.changeSearchPropertyArchitect(newValue)
+          this.props.actions.changeSearchPropertyArchitectBuildings(newValue)
     }
 
     render(){
@@ -50,15 +50,15 @@ export class PropertyArchitect extends React.Component{
                 isOpen={this.props.form !== undefined}
                 handleSubmitProperty={this.handleSubmitProperty}
                 closeFormPropertyArchitect={this.closeFormPropertyArchitect}
-                type={"NewProperty"}
+                type={"NewBuilding"}
             /> 
             <NewButton 
                 open={this.props.actions.openModalNewProperty}
                  />
            <div className={style.grid}>
-               { this.props.properties.map((item,index)=>{
+               { this.props.buildings.map((item,index)=>{
                     return ( 
-                    <div className={style.moduleBodyContainer} key={index} onClick={()=>{history.push(`/property-architect/${item.id}`);}}>   
+                    <div className={style.moduleBodyContainer} key={index} >   
                     <div className={style.moduleBodyContent}>
                         <div className={style.moduleBodyContentImage}> <img src={item.imagePath} alt="ImageHotel"></img> </div>
                         <div className={style.moduleBodyContentHotelName}>
@@ -80,10 +80,10 @@ export class PropertyArchitect extends React.Component{
 
 function mapStateToProps(state){
     return {
-        properties: getSort(state.PropertyArchitect.properties,state.FilterPropertyArchitect.property.sort.direction,state.FilterPropertyArchitect.property.search),   
+        buildings: getSort(state.PropertyArchitect.buildings,state.FilterPropertyArchitect.buildings.sort.direction,state.FilterPropertyArchitect.buildings.search),   
         form: state.PropertyArchitect.form,
-        sortFolder: state.FilterPropertyArchitect.property.sort.direction,
-        searchValue: state.FilterPropertyArchitect.property.search,
+        sortFolder: state.FilterPropertyArchitect.buildings.sort.direction,
+        searchValue: state.FilterPropertyArchitect.buildings.search,
     }
 }
 
@@ -93,13 +93,15 @@ function mapDispatchToProps(dispatch) {
         {
             openModalNewProperty,
             closeModalNewProperty,
-            addNewProperty,
-            changeSortPropertyArchitect,
-            changeSearchPropertyArchitect
+            addNewBuildings,
+            changeSortPropertyArchitectBuildings,
+            changeSearchPropertyArchitectBuildings
         },
         dispatch,
       ),
     };
   }
 
-export default connect(mapStateToProps,mapDispatchToProps)(withRouter (PropertyArchitect));
+
+export default connect(mapStateToProps,mapDispatchToProps)(withRouter (PropertyArchitectBuildings));
+

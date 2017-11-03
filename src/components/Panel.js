@@ -1,6 +1,7 @@
 import React from 'react';
 import FormArchitectProperty from './FormArchitectProperty';
 import FormFolderPrototyper from './FormFolderPrototyper';
+import FormArchitectPropertyBuildings from './FormArchitectPropertyBuildings';
 import classNames from 'classnames';
 
 import style from '../styles/Panel.scss';
@@ -19,6 +20,11 @@ export class Panel extends React.Component {
               onSubmit={this.props.handleSubmitProperty}
               onCancel={this.props.closeFormPropertyArchitect} />
             break;
+        case 'NewBuilding':
+            form = <FormArchitectPropertyBuildings 
+            onSubmit={this.props.handleSubmitProperty}
+            onCancel={this.props.closeFormPropertyArchitect} />
+          break;
           case 'NewFolder':
                 form = <FormFolderPrototyper 
                 onSubmit={this.props.handleSubmitPrototyper}
