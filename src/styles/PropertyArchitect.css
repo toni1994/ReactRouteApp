@@ -80,7 +80,8 @@
 .aboutHotelButton {
   display: flex;
   width: 30px;
-  align-items: center; }
+  align-items: center;
+  margin-right: 10px; }
 
 .body {
   height: 100%;

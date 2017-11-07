@@ -5,10 +5,11 @@ import { bindActionCreators } from 'redux';
 import MultiSearch from './MultiSearch';
 import Panel from './Panel';
 import NewButton from './NewButton';
-import { openModalNewProperty, closeModalNewProperty, addNewProperty, changeSortPropertyArchitect, changeSearchPropertyArchitect, selectedProperty } from '../redux/actions/index'
+import { openModalNewProperty, closeModalNewProperty, addNewProperty, changeSortPropertyArchitect, changeSearchPropertyArchitect, selectedProperty, deleteProperty } from '../redux/actions/index'
 import { push } from 'react-router-redux';
 import { history } from '../services/index' 
 import getSort from '../utilis/sort';
+import DropDownPropertyArchitect from './DropDown';
 
 import FaEllipsisV from 'react-icons/lib/fa/ellipsis-v'
 import { withRouter } from 'react-router';
@@ -20,6 +21,9 @@ export class PropertyArchitect extends React.Component{
         this.closeFormPropertyArchitect=this.closeFormPropertyArchitect.bind(this);
         this.updateSort=this.updateSort.bind(this);
         this.changeInputValue= this.changeInputValue.bind(this);
+        this.deleteProperty=this.deleteProperty.bind(this);
+        this.previewProperty=this.previewProperty.bind(this);
+        this.editProperty=this.editProperty.bind(this);
     };
 
     componentWillUnmount(){
@@ -40,6 +44,18 @@ export class PropertyArchitect extends React.Component{
       
     changeInputValue(newValue){
           this.props.actions.changeSearchPropertyArchitect(newValue)
+    }
+
+    deleteProperty(id){
+        this.props.actions.deleteProperty(id)
+    }
+
+    previewProperty(id){
+        console.log(id)
+    }
+
+    editProperty(id){
+        console.log(id)
     }
 
     render(){
@@ -66,7 +82,7 @@ export class PropertyArchitect extends React.Component{
                                 <div className={style.hotelsName}> {item.name} </div>
                                 <div className={style.hotelsOwner}> {item.managerName} </div> 
                             </div>
-                            <div className={style.aboutHotelButton}> <FaEllipsisV /> 
+                            <div className={style.aboutHotelButton}> <DropDownPropertyArchitect idItem={item.id} deleteProperty={this.deleteProperty} previewProperty={this.previewProperty} editProperty={this.editProperty}   />
                             </div> 
                         </div>  
                     </div>
@@ -96,7 +112,8 @@ function mapDispatchToProps(dispatch) {
             addNewProperty,
             changeSortPropertyArchitect,
             changeSearchPropertyArchitect,
-            selectedProperty
+            selectedProperty,
+            deleteProperty,
         },
         dispatch,
       ),

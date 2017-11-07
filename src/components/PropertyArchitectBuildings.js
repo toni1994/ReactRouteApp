@@ -6,8 +6,8 @@ import MultiSearch from './MultiSearch';
 import Panel from './Panel';
 import NewButton from './NewButton';
 import { openModalNewProperty, closeModalNewProperty, addNewBuildings, changeSortPropertyArchitectBuildings, changeSearchPropertyArchitectBuildings } from '../redux/actions/index'
-import { push } from 'react-router-redux';
-import { history } from '../services/index' 
+//import { push } from 'react-router-redux';
+//import { history } from '../services/index' 
 import getSort from '../utilis/sort';
 
 import FaEllipsisV from 'react-icons/lib/fa/ellipsis-v'

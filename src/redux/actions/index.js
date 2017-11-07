@@ -46,7 +46,11 @@ export const CHANGE_SORT_PROPERTY_ARCHITECT_BUILDINGS = 'CHANGE_SORT_PROPERTY_AR
 export const changeSortPropertyArchitectBuildings = createAction(CHANGE_SORT_PROPERTY_ARCHITECT_BUILDINGS);
 
 export const CHANGE_SEARCH_PROPERTY_ARCHITECT_BUILDINGS = 'CHANGE_SEARCH_PROPERTY_ARCHITECT_BUILDINGS';
-export const changeSearchPropertyArchitectBuildings = createAction(CHANGE_SEARCH_PROPERTY_ARCHITECT_BUILDINGS)
+export const changeSearchPropertyArchitectBuildings = createAction(CHANGE_SEARCH_PROPERTY_ARCHITECT_BUILDINGS);
+
+export const DELETE_PROPERTY = 'DELETE_PROPERTY';
+export const deleteProperty = createAction(DELETE_PROPERTY);
+
 
 
 

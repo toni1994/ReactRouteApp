@@ -7,7 +7,7 @@ import style from '../styles/Form.scss';
 
 const validate = values => {
     const errors = {};
-    if (!values.propertyName) {
+    if (!values.BuildingName) {
       errors.BuildingName = 'Required';
     }
     if (!values.managerName) {

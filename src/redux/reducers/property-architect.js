@@ -2,7 +2,8 @@ import { OPEN_MODAL_NEW_PROPERTY,
     CLOSE_MODAL_NEW_PROPERTY, 
     ADD_NEW_PROPERTY, 
     ADD_NEW_PROPERTY_BUILDINGS,
-    SELECTED_PROPERTY } from '../actions/index';
+    SELECTED_PROPERTY,
+    DELETE_PROPERTY } from '../actions/index';
 
 const initialState = {
     properties: [{
@@ -83,7 +84,16 @@ export default function reducer(state = initialState , action){
             ...state,
             selectedProperty: action.payload,
     }
-
+    case DELETE_PROPERTY:
+        const id = action.payload;
+        const index = state.properties.findIndex(item => item.id === id);
+        return {
+          ...state,
+          properties: [
+            ...state.properties.slice(0, index),
+            ...state.properties.slice(index + 1, state.properties.length),
+          ],
+        };
     default: 
     return state
     }
