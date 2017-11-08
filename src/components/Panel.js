@@ -17,9 +17,32 @@ export class Panel extends React.Component {
         switch(type) {
           case 'NewProperty':
               form = <FormArchitectProperty 
+              name = {undefined}
+              image = {undefined}
+              manager = {undefined}
+              mode = {"Change"}
               onSubmit={this.props.handleSubmitProperty}
               onCancel={this.props.closeFormPropertyArchitect} />
             break;
+          case 'PreviewProperty':
+            form = <FormArchitectProperty 
+            name = {this.props.name}
+            image = {this.props.image}
+            manager = {this.props.manager}
+            mode = {"Preview"}
+            onSubmit={this.props.handleSubmitProperty}
+            onCancel={this.props.closeFormPropertyArchitect} />
+          break;
+          case 'EditProperty':
+            form = <FormArchitectProperty 
+            name = {this.props.name}
+            manager = {this.props.manager}
+            address = {this.props.address}
+            phone = {this.props.phone}
+            mode = {"Change"}
+            onSubmit={this.props.handleSubmitProperty}
+            onCancel={this.props.closeFormPropertyArchitect} />
+        break;
           case 'NewBuilding':
             form = <FormArchitectPropertyBuildings 
             onSubmit={this.props.handleSubmitProperty}
@@ -29,7 +52,7 @@ export class Panel extends React.Component {
                 form = <FormFolderPrototyper 
                 onSubmit={this.props.handleSubmitPrototyper}
                 onCancel={this.props.closeFormAreaPrototyper} />
-            break;
+            break; 
           default:
             form = <div>{'BYE'}</div>;
             break;

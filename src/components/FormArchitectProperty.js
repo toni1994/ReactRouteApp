@@ -39,22 +39,26 @@ const renderFormField = ({
   )
 
 const FormPropArchitectProperty = (props) => (
-    <form className={style.form} onSubmit={props.handleSubmit}>
+  <form className={style.form} onSubmit={props.handleSubmit}>
         <div className={style.header}>
             <FaBuildingO />
-            <p> Add Property </p>
+            {props.mode === "Preview" ? <p> {props.name} </p> : props.name === undefined ? <p> Add Property </p> : <p> Edit Property </p> }
         </div>
-        <div className={style.body}>
-                <Field name="propertyName" component={renderFormField} type="text" label="Property name" />
+        {props.mode === "Change" ? <div className={style.body}>
+                <Field name="propertyName" value={props.name} component={renderFormField} type="text" label="Property name" />
                 <Field name="managerName" component={renderFormField} type="text" label="Manager Name" />
                 <Field name="address" component={renderFormField} type="text" label="Address" />
                 <Field name="phone" component={renderFormField} type="text" label="Phone" />
-        </div>
+        </div> :
+        <div className={style.body}>
+         <div className={style.ImageContainer}> <img src={props.image} alt="ImageHotel"></img> </div>
+         <div className={style.NameContainer}> MANAGER: {props.manager} </div>
+        </div> }
         <div className={style.footer}>
             <FormButton notPrimary onClick={props.onCancel}> CANCEL
             </FormButton>
-            <FormButton type="submit"> ADD PROPERTY
-            </FormButton>
+            {props.mode === "Change" ? <FormButton type="submit"> ADD PROPERTY
+            </FormButton> : <div> </div>}
         </div>
     </form>
 )

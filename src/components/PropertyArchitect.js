@@ -24,6 +24,12 @@ export class PropertyArchitect extends React.Component{
         this.deleteProperty=this.deleteProperty.bind(this);
         this.previewProperty=this.previewProperty.bind(this);
         this.editProperty=this.editProperty.bind(this);
+        this.nameOfProperty = undefined;
+        this.imageOfProperty = undefined;
+        this.managerOfProperty = undefined;
+        this.addressOfProperty = undefined;
+        this.phoneOfProperty = undefined;
+        this.typeOfPanel = "NewProperty";
     };
 
     componentWillUnmount(){
@@ -36,6 +42,7 @@ export class PropertyArchitect extends React.Component{
 
     closeFormPropertyArchitect(){
         this.props.actions.closeModalNewProperty();
+        this.typeOfPanel = "NewProperty";
     }
 
     updateSort(newValue){
@@ -50,12 +57,21 @@ export class PropertyArchitect extends React.Component{
         this.props.actions.deleteProperty(id)
     }
 
-    previewProperty(id){
-        console.log(id)
+    previewProperty(nameOfProperty,imageOfProperty,managerOfProperty){
+        this.nameOfProperty = nameOfProperty;
+        this.imageOfProperty = imageOfProperty;
+        this.managerOfProperty = managerOfProperty;
+        this.typeOfPanel = "PreviewProperty";
+        this.props.actions.openModalNewProperty();
     }
 
-    editProperty(id){
-        console.log(id)
+    editProperty(nameOfProperty,managerOfProperty,addressOfProperty,phoneOfProperty){
+        this.nameOfProperty = nameOfProperty;
+        this.addressOfProperty = addressOfProperty;
+        this.managerOfProperty = managerOfProperty;
+        this.phoneOfProperty = phoneOfProperty;
+        this.typeOfPanel = "EditProperty";
+        this.props.actions.openModalNewProperty();
     }
 
     render(){
@@ -66,7 +82,12 @@ export class PropertyArchitect extends React.Component{
                 isOpen={this.props.form !== undefined}
                 handleSubmitProperty={this.handleSubmitProperty}
                 closeFormPropertyArchitect={this.closeFormPropertyArchitect}
-                type={"NewProperty"}
+                name = {this.nameOfProperty}
+                image = {this.imageOfProperty}
+                manager = {this.managerOfProperty}
+                address = {this.addressOfProperty}
+                phone = {this.phoneOfProperty}
+                type={this.typeOfPanel}
             /> 
             <NewButton 
                 open={this.props.actions.openModalNewProperty}
@@ -82,7 +103,9 @@ export class PropertyArchitect extends React.Component{
                                 <div className={style.hotelsName}> {item.name} </div>
                                 <div className={style.hotelsOwner}> {item.managerName} </div> 
                             </div>
-                            <div className={style.aboutHotelButton}> <DropDownPropertyArchitect idItem={item.id} deleteProperty={this.deleteProperty} previewProperty={this.previewProperty} editProperty={this.editProperty}   />
+                            <div className={style.aboutHotelButton}> <DropDownPropertyArchitect idItem={item.id} deleteProperty={this.deleteProperty} 
+                            previewProperty={this.previewProperty} editProperty={this.editProperty} imagePath={item.imagePath} managerName={item.managerName}
+                            name={item.name} address={this.address} phone={this.phone} />
                             </div> 
                         </div>  
                     </div>

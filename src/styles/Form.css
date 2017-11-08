@@ -61,3 +61,18 @@
 
 .label {
   display: flex; }
+
+.ImageContainer {
+  display: flex;
+  flex-direction: row; }
+  .ImageContainer img {
+    width: 100%;
+    height: 200px; }
+
+.NameContainer {
+  display: flex;
+  flex-direction: row;
+  color: #B4B3B9;
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: 500; }

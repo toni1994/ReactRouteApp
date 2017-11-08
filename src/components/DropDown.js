@@ -23,11 +23,11 @@ class DropDownPropertyArchitect extends React.PureComponent {
     }
 
     previewItem() {
-        this.props.previewProperty(this.props.idItem);
+        this.props.previewProperty(this.props.name,this.props.imagePath,this.props.managerName);
     }
 
     editItem() {
-        this.props.editProperty(this.props.idItem);
+        this.props.editProperty(this.props.idItem,this.props.managerName,this.props.address,this.props.phone);
     }
      
       render(){
