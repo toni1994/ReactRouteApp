@@ -40,17 +40,17 @@ const renderFormField = ({
   )
 
 
-let FormPropArchitectProperty = (props) => (
+let FormEditPropArchitectProperty = (props) => (
   <form className={style.form} onSubmit={props.handleSubmit}>
         <div className={style.header}>
             <FaBuildingO />
-            {props.mode === "Preview" ? <p> {props.initialValues.name} </p> :  <p> Add Property </p> }
+            { <p> Edit Property </p> }
         </div>
-        {props.mode === "New" ? <div className={style.body}>
-                <Field name="name" editValue={""} component={renderFormField} type="text" label="Property name" />
-                <Field name="managerName" editValue={""} component={renderFormField} type="text" label="Manager Name" />
-                <Field name="address" editValue={""}  component={renderFormField} type="text" label="Address" />
-                <Field name="phone" editValue={""}  component={renderFormField} type="text" label="Phone" />
+        {props.mode === "Edit" ? <div className={style.body}>
+                <Field name="name" editValue={props.initialValues.name} component={renderFormField} type="text" label="Property name" />
+                <Field name="managerName" editValue={props.initialValues.managerName} component={renderFormField} type="text" label="Manager Name" />
+                <Field name="address" editValue={props.initialValues.address} component={renderFormField} type="text" label="Address" />
+                <Field name="phone" editValue={props.initialValues.phone} component={renderFormField} type="text" label="Phone" />
         </div> :
         <div className={style.body}>
          <div className={style.ImageContainer}> <img src={props.initialValues.imagePath} alt="ImageHotel"></img> </div>
@@ -59,25 +59,23 @@ let FormPropArchitectProperty = (props) => (
         <div className={style.footer}>
             <FormButton notPrimary onClick={props.onCancel}> CANCEL
             </FormButton>
-            {props.mode === "Preview" ? <div>  </div> :   
-            <FormButton type="submit"> ADD PROPERTY
-            </FormButton>  }
+            <FormButton type="submit"> EDIT PROPERTY
+            </FormButton> 
         </div>
     </form>
 )
 
-FormPropArchitectProperty = reduxForm({
-  form: 'addProperty',
+FormEditPropArchitectProperty = reduxForm({
+  form: 'editProperty',
   validate
-})(FormPropArchitectProperty)
+})(FormEditPropArchitectProperty)
 
-FormPropArchitectProperty = connect(
+FormEditPropArchitectProperty = connect(
   state => ({
     initialValues: state.PropertyArchitect.properties[state.PropertyArchitect.selectedProperty] ,
     selectedValue: state.PropertyArchitect.selectedProperty,
   }),
-)(FormPropArchitectProperty)
+)(FormEditPropArchitectProperty)
 
 
-export default FormPropArchitectProperty
-
+export default FormEditPropArchitectProperty

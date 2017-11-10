@@ -5,7 +5,10 @@ import { bindActionCreators } from 'redux';
 import MultiSearch from './MultiSearch';
 import Panel from './Panel';
 import NewButton from './NewButton';
-import { openModalNewProperty, closeModalNewProperty, addNewProperty, changeSortPropertyArchitect, changeSearchPropertyArchitect, selectedProperty, deleteProperty } from '../redux/actions/index'
+import { openModalNewProperty, closeModalNewProperty, 
+    addNewProperty, changeSortPropertyArchitect, 
+    changeSearchPropertyArchitect, selectedProperty, 
+    deleteProperty,updateProperty } from '../redux/actions/index'
 import { push } from 'react-router-redux';
 import { history } from '../services/index' 
 import getSort from '../utilis/sort';
@@ -24,6 +27,7 @@ export class PropertyArchitect extends React.Component{
         this.deleteProperty=this.deleteProperty.bind(this);
         this.previewProperty=this.previewProperty.bind(this);
         this.editProperty=this.editProperty.bind(this);
+        this.handleEditProperty=this.handleEditProperty.bind(this);
         this.idOfProperty = undefined;
         this.typeOfPanel = "NewProperty";
     };
@@ -34,6 +38,10 @@ export class PropertyArchitect extends React.Component{
 
     handleSubmitProperty(newPropertyData){
         this.props.actions.addNewProperty(newPropertyData);
+    }
+
+    handleEditProperty(updatePropertyData){
+        this.props.actions.updateProperty( updatePropertyData);
     }
 
     closeFormPropertyArchitect(){
@@ -72,6 +80,7 @@ export class PropertyArchitect extends React.Component{
             <Panel 
                 isOpen={this.props.form !== undefined}
                 handleSubmitProperty={this.handleSubmitProperty}
+                handleEditProperty= {this.handleEditProperty}
                 closeFormPropertyArchitect={this.closeFormPropertyArchitect}
                 id={this.idOfProperty}
                 type={this.typeOfPanel}
@@ -123,6 +132,7 @@ function mapDispatchToProps(dispatch) {
             changeSearchPropertyArchitect,
             selectedProperty,
             deleteProperty,
+            updateProperty,
         },
         dispatch,
       ),

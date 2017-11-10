@@ -2,6 +2,7 @@ import React from 'react';
 import FormArchitectProperty from './FormArchitectProperty';
 import FormFolderPrototyper from './FormFolderPrototyper';
 import FormArchitectPropertyBuildings from './FormArchitectPropertyBuildings';
+import FormEditPropArchitectProperty from './FormEditPropArchitectProperty';
 import classNames from 'classnames';
 
 import style from '../styles/Panel.scss';
@@ -30,11 +31,11 @@ export class Panel extends React.Component {
             onCancel={this.props.closeFormPropertyArchitect} />
           break;
           case 'EditProperty':
-            form = <FormArchitectProperty 
+            form = <FormEditPropArchitectProperty 
             id = {this.props.idOfProperty}
             phone = {this.props.phone}
             mode = {"Edit"}
-            onSubmit={this.props.handleSubmitProperty}
+            onSubmit={this.props.handleEditProperty}
             onCancel={this.props.closeFormPropertyArchitect} />
         break;
           case 'NewBuilding':

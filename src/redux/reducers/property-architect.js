@@ -1,6 +1,7 @@
 import { OPEN_MODAL_NEW_PROPERTY, 
     CLOSE_MODAL_NEW_PROPERTY, 
-    ADD_NEW_PROPERTY, 
+    ADD_NEW_PROPERTY,
+    UPDATE_PROPERTY, 
     ADD_NEW_PROPERTY_BUILDINGS,
     SELECTED_PROPERTY,
     DELETE_PROPERTY } from '../actions/index';
@@ -84,7 +85,23 @@ export default function reducer(state = initialState , action){
                     managerName: action.payload.managerName,
                 }],
                 form: undefined,
-    }  
+    }
+    case UPDATE_PROPERTY: 
+        const idUpdate = action.payload.id;
+    return {
+      ...state,
+      properties: [
+        ...state.properties.slice(0, idUpdate),
+        {   id: idUpdate,
+            name: action.payload.name,
+            imagePath: action.payload.imagePath,
+            managerName: action.payload.managerName,
+            address: action.payload.address,
+            phone: action.payload.phone,},
+        ...state.properties.slice(idUpdate + 1, state.properties.length),
+      ],
+    };
+
     case SELECTED_PROPERTY:
     return {
             ...state,

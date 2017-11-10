@@ -9,6 +9,9 @@ export const closeModalNewProperty = createAction(CLOSE_MODAL_NEW_PROPERTY);
 export const ADD_NEW_PROPERTY = 'ADD_NEW_PROPERTY';
 export const addNewProperty = createAction(ADD_NEW_PROPERTY);
 
+export const UPDATE_PROPERTY = 'UPDATE_PROPERTY';
+export const updateProperty = createAction(UPDATE_PROPERTY);
+
 export const ADD_NEW_PROPERTY_BUILDINGS = 'ADD_NEW_PROPERTY_BUILDINGS';
 export const addNewBuildings = createAction(ADD_NEW_PROPERTY_BUILDINGS);
 
