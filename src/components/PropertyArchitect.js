@@ -24,11 +24,7 @@ export class PropertyArchitect extends React.Component{
         this.deleteProperty=this.deleteProperty.bind(this);
         this.previewProperty=this.previewProperty.bind(this);
         this.editProperty=this.editProperty.bind(this);
-        this.nameOfProperty = undefined;
-        this.imageOfProperty = undefined;
-        this.managerOfProperty = undefined;
-        this.addressOfProperty = undefined;
-        this.phoneOfProperty = undefined;
+        this.idOfProperty = undefined;
         this.typeOfPanel = "NewProperty";
     };
 
@@ -53,23 +49,18 @@ export class PropertyArchitect extends React.Component{
           this.props.actions.changeSearchPropertyArchitect(newValue)
     }
 
-    deleteProperty(id){
-        this.props.actions.deleteProperty(id)
+    deleteProperty(idOfProperty){
+        this.props.actions.deleteProperty(idOfProperty)
     }
 
-    previewProperty(nameOfProperty,imageOfProperty,managerOfProperty){
-        this.nameOfProperty = nameOfProperty;
-        this.imageOfProperty = imageOfProperty;
-        this.managerOfProperty = managerOfProperty;
+    previewProperty(idOfProperty){
+        this.idOfProperty = idOfProperty
         this.typeOfPanel = "PreviewProperty";
         this.props.actions.openModalNewProperty();
     }
 
-    editProperty(nameOfProperty,managerOfProperty,addressOfProperty,phoneOfProperty){
-        this.nameOfProperty = nameOfProperty;
-        this.addressOfProperty = addressOfProperty;
-        this.managerOfProperty = managerOfProperty;
-        this.phoneOfProperty = phoneOfProperty;
+    editProperty(idOfProperty){
+        this.idOfProperty = idOfProperty
         this.typeOfPanel = "EditProperty";
         this.props.actions.openModalNewProperty();
     }
@@ -82,11 +73,7 @@ export class PropertyArchitect extends React.Component{
                 isOpen={this.props.form !== undefined}
                 handleSubmitProperty={this.handleSubmitProperty}
                 closeFormPropertyArchitect={this.closeFormPropertyArchitect}
-                name = {this.nameOfProperty}
-                image = {this.imageOfProperty}
-                manager = {this.managerOfProperty}
-                address = {this.addressOfProperty}
-                phone = {this.phoneOfProperty}
+                id={this.idOfProperty}
                 type={this.typeOfPanel}
             /> 
             <NewButton 
@@ -104,8 +91,7 @@ export class PropertyArchitect extends React.Component{
                                 <div className={style.hotelsOwner}> {item.managerName} </div> 
                             </div>
                             <div className={style.aboutHotelButton}> <DropDownPropertyArchitect idItem={item.id} deleteProperty={this.deleteProperty} 
-                            previewProperty={this.previewProperty} editProperty={this.editProperty} imagePath={item.imagePath} managerName={item.managerName}
-                            name={item.name} address={this.address} phone={this.phone} />
+                            previewProperty={this.previewProperty} editProperty={this.editProperty} />
                             </div> 
                         </div>  
                     </div>

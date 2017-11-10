@@ -11,12 +11,16 @@ const initialState = {
         name: "Hotel Lav",
         imagePath: "https://images.trvl-media.com/media/content/expus/graphics/launch/hotel1320x742.jpg",
         managerName: "Marko Matić",
+        address: "Beverly Hills 10",
+        phone: "39406454"
     },
     {
         id: 1,
         name: "Helius Resolt",
         imagePath: "https://taj.tajhotels.com/content/dam/gateway/hotels/Beach-Road,Calicut/images/welcome/Calicut_Welcome-for-Web_4x3-01.jpg",
         managerName: "Abdul Al Rahim",
+        address: "Vukovarska 40",
+        phone: "767806454"
     }],
     buildings: [{
         id: 0,
@@ -61,9 +65,11 @@ export default function reducer(state = initialState , action){
             properties :[...state.properties, 
                 {
                     id: state.properties.length + 1,
-                    name: action.payload.propertyName,
+                    name: action.payload.name,
                     imagePath: "http://api.helius.proficodev.com/public/uploads/building/436b8a0898b01484144240789.jpeg",
                     managerName: action.payload.managerName,
+                    address: action.payload.address,
+                    phone: action.payload.phone,
                 }],
                 form: undefined,
     }

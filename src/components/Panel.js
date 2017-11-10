@@ -17,29 +17,23 @@ export class Panel extends React.Component {
         switch(type) {
           case 'NewProperty':
               form = <FormArchitectProperty 
-              name = {undefined}
-              image = {undefined}
-              manager = {undefined}
-              mode = {"Change"}
+              id = {this.props.idOfProperty}
+              mode = {"New"}
               onSubmit={this.props.handleSubmitProperty}
               onCancel={this.props.closeFormPropertyArchitect} />
             break;
           case 'PreviewProperty':
             form = <FormArchitectProperty 
-            name = {this.props.name}
-            image = {this.props.image}
-            manager = {this.props.manager}
+            id = {this.props.idOfProperty}
             mode = {"Preview"}
             onSubmit={this.props.handleSubmitProperty}
             onCancel={this.props.closeFormPropertyArchitect} />
           break;
           case 'EditProperty':
             form = <FormArchitectProperty 
-            name = {this.props.name}
-            manager = {this.props.manager}
-            address = {this.props.address}
+            id = {this.props.idOfProperty}
             phone = {this.props.phone}
-            mode = {"Change"}
+            mode = {"Edit"}
             onSubmit={this.props.handleSubmitProperty}
             onCancel={this.props.closeFormPropertyArchitect} />
         break;
