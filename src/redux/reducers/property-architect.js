@@ -65,7 +65,7 @@ export default function reducer(state = initialState , action){
             ...state,
             properties :[...state.properties, 
                 {
-                    id: state.properties.length + 1,
+                    id: state.properties.length,
                     name: action.payload.name,
                     imagePath: "http://api.helius.proficodev.com/public/uploads/building/436b8a0898b01484144240789.jpeg",
                     managerName: action.payload.managerName,
@@ -98,8 +98,8 @@ export default function reducer(state = initialState , action){
             managerName: action.payload.managerName,
             address: action.payload.address,
             phone: action.payload.phone,},
-        ...state.properties.slice(idUpdate + 1, state.properties.length),
-      ],
+        ...state.properties.slice(idUpdate + 1, state.properties.length),  
+      ], form: undefined,
     };
 
     case SELECTED_PROPERTY:
