@@ -12,6 +12,9 @@ export const addNewProperty = createAction(ADD_NEW_PROPERTY);
 export const UPDATE_PROPERTY = 'UPDATE_PROPERTY';
 export const updateProperty = createAction(UPDATE_PROPERTY);
 
+export const DELETE_PROPERTY = 'DELETE_PROPERTY';
+export const deleteProperty = createAction(DELETE_PROPERTY);
+
 export const ADD_NEW_PROPERTY_BUILDINGS = 'ADD_NEW_PROPERTY_BUILDINGS';
 export const addNewBuildings = createAction(ADD_NEW_PROPERTY_BUILDINGS);
 
@@ -51,8 +54,16 @@ export const changeSortPropertyArchitectBuildings = createAction(CHANGE_SORT_PRO
 export const CHANGE_SEARCH_PROPERTY_ARCHITECT_BUILDINGS = 'CHANGE_SEARCH_PROPERTY_ARCHITECT_BUILDINGS';
 export const changeSearchPropertyArchitectBuildings = createAction(CHANGE_SEARCH_PROPERTY_ARCHITECT_BUILDINGS);
 
-export const DELETE_PROPERTY = 'DELETE_PROPERTY';
-export const deleteProperty = createAction(DELETE_PROPERTY);
+
+
+export const DELETE_FOLDER = 'DELETE_FOLDER';
+export const deleteFolder = createAction(DELETE_FOLDER);
+
+export const UPDATE_FOLDER = 'UPDATE_FOLDER';
+export const updateFolder = createAction(UPDATE_FOLDER);
+
+export const SELECT_FOLDER = 'SELECT_FOLDER';
+export const selectFolder = createAction(SELECT_FOLDER);
 
 
 

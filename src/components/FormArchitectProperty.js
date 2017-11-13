@@ -55,6 +55,8 @@ let FormPropArchitectProperty = (props) => (
         <div className={style.body}>
          <div className={style.ImageContainer}> <img src={props.initialValues.imagePath} alt="ImageHotel"></img> </div>
          <div className={style.NameContainer}> MANAGER: {props.initialValues.managerName} </div>
+         <div className={style.NameContainer}> ADRESS: {props.initialValues.address} </div>
+         <div className={style.NameContainer}> PHONE: {props.initialValues.phone} </div>
         </div> }
         <div className={style.footer}>
             <FormButton notPrimary onClick={props.onCancel}> CANCEL
@@ -73,7 +75,7 @@ FormPropArchitectProperty = reduxForm({
 
 FormPropArchitectProperty = connect(
   state => ({
-    initialValues: state.PropertyArchitect.properties[state.PropertyArchitect.selectedProperty] ,
+    initialValues: state.PropertyArchitect.properties[state.PropertyArchitect.properties.findIndex(item => item.id === state.PropertyArchitect.selectedProperty)] ,
     selectedValue: state.PropertyArchitect.selectedProperty,
   }),
 )(FormPropArchitectProperty)

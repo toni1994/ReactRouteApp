@@ -10,7 +10,7 @@ import Delete from 'material-ui/svg-icons/action/delete';
 import BorderColor from 'material-ui/svg-icons/editor/border-color';
 
 
-class DropDownPropertyArchitect extends React.PureComponent {
+class DropDown extends React.PureComponent {
     constructor(props) {
       super(props);
     this.deleteItem=this.deleteItem.bind(this);
@@ -19,15 +19,15 @@ class DropDownPropertyArchitect extends React.PureComponent {
     }
 
     deleteItem() {
-        this.props.deleteProperty(this.props.idItem);
+        this.props.deleteItem(this.props.idItem);
     }
 
     previewItem() {
-        this.props.previewProperty(this.props.idItem);
+        this.props.previewItem(this.props.idItem);
     }
 
     editItem() {
-        this.props.editProperty(this.props.idItem);
+        this.props.editItem(this.props.idItem);
     }
      
       render(){
@@ -49,4 +49,4 @@ class DropDownPropertyArchitect extends React.PureComponent {
 }
 
   
-  export default DropDownPropertyArchitect;
+  export default DropDown;

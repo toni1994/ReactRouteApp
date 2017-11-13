@@ -72,7 +72,7 @@ FormEditPropArchitectProperty = reduxForm({
 
 FormEditPropArchitectProperty = connect(
   state => ({
-    initialValues: state.PropertyArchitect.properties[state.PropertyArchitect.selectedProperty] ,
+    initialValues: state.PropertyArchitect.properties[state.PropertyArchitect.properties.findIndex(item => item.id === state.PropertyArchitect.selectedProperty)] ,
     selectedValue: state.PropertyArchitect.selectedProperty,
   }),
 )(FormEditPropArchitectProperty)

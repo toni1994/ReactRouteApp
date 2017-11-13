@@ -2,6 +2,7 @@ import React from 'react';
 import { reduxForm, Field } from 'redux-form';
 import FolderOpenO from 'react-icons/lib/fa/folder-open-o';
 import FormButton from './FormButton';
+import FormField from './FormField';
 import { connect } from 'react-redux';
 
 import style from '../styles/Form.scss';
@@ -19,51 +20,49 @@ const renderFormField = ({
     input,
     label,
     type,
+    editValue,
+    ...props,
     meta: { touched, error }
   }) => (
     <div className={style.inputContainer}>
       <div className={style.label}>  <label >{label}</label> </div>
       <div className={style.input}>
-        <input {...input} placeholder={label} type={type} />
+      <FormField {...input} {...props} value={editValue} placeholder={label} type={type} />
       </div>
       <div className={style.error}>  {touched &&
           ((error && <span>{error}</span>) )} </div>
     </div>
   )
 
-let FormFolderPrototyper = (props) => (
+let FormEditFolder = (props) => (
     <form className={style.form} onSubmit={props.handleSubmit}>
         <div className={style.header}>
             <FolderOpenO />
-            {props.mode === "Preview" ? <p> About folder </p> :  <p>New Folder </p> }
+            <p> Edit Folder </p>
         </div>
-        {props.mode === "New" ? 
         <div className={style.body}>
-                <Field name="folderName" component={renderFormField} type="text" label="Folder name" />
-        </div> : <div className={style.body}>
-         <div className={style.NameContainer}> NAME: {props.initialValues.name} </div>
-        </div>}
+                <Field name="folderName" editValue={props.initialValues.name} component={renderFormField} type="text" label="Folder name" />
+        </div>
         <div className={style.footer}>
             <FormButton notPrimary onClick={props.onCancel}> CANCEL
             </FormButton>
-            {props.mode === "Preview" ? <div>  </div> :   
-            <FormButton type="submit"> CREATE
-            </FormButton>  }
+            <FormButton type="submit"> SUBMIT
+            </FormButton>
         </div>
     </form>
 )
 
-FormFolderPrototyper = reduxForm({
+FormEditFolder = reduxForm({
     form: 'addFolder',
     validate
-  })(FormFolderPrototyper)
+  })(FormEditFolder)
   
-  FormFolderPrototyper = connect(
+  FormEditFolder = connect(
     state => ({
       initialValues: state.AreaPrototyper.folders[state.AreaPrototyper.folders.findIndex(item => item.id === state.AreaPrototyper.selectedFolder)] ,
       selectedValue: state.AreaPrototyper.selectedFolder,
     }),
-  )(FormFolderPrototyper)
+  )(FormEditFolder)
   
   
-  export default FormFolderPrototyper
+  export default FormEditFolder

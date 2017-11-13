@@ -12,7 +12,7 @@ import { openModalNewProperty, closeModalNewProperty,
 import { push } from 'react-router-redux';
 import { history } from '../services/index' 
 import getSort from '../utilis/sort';
-import DropDownPropertyArchitect from './DropDown';
+import DropDown from './DropDown';
 
 import FaEllipsisV from 'react-icons/lib/fa/ellipsis-v'
 import { withRouter } from 'react-router';
@@ -99,8 +99,8 @@ export class PropertyArchitect extends React.Component{
                                 <div className={style.hotelsName}> {item.name} </div>
                                 <div className={style.hotelsOwner}> {item.managerName} </div> 
                             </div>
-                            <div className={style.aboutHotelButton}> <DropDownPropertyArchitect idItem={item.id} deleteProperty={this.deleteProperty} 
-                            previewProperty={this.previewProperty} editProperty={this.editProperty} />
+                            <div className={style.aboutHotelButton}> <DropDown idItem={item.id} deleteItem={this.deleteProperty} 
+                            previewItem={this.previewProperty} editItem={this.editProperty} />
                             </div> 
                         </div>  
                     </div>

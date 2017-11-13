@@ -3,6 +3,7 @@ import FormArchitectProperty from './FormArchitectProperty';
 import FormFolderPrototyper from './FormFolderPrototyper';
 import FormArchitectPropertyBuildings from './FormArchitectPropertyBuildings';
 import FormEditPropArchitectProperty from './FormEditPropArchitectProperty';
+import FormEditFolder from './FormEditFolder';
 import classNames from 'classnames';
 
 import style from '../styles/Panel.scss';
@@ -29,25 +30,41 @@ export class Panel extends React.Component {
             mode = {"Preview"}
             onSubmit={this.props.handleSubmitProperty}
             onCancel={this.props.closeFormPropertyArchitect} />
-          break;
+            break;
           case 'EditProperty':
             form = <FormEditPropArchitectProperty 
             id = {this.props.idOfProperty}
-            phone = {this.props.phone}
             mode = {"Edit"}
             onSubmit={this.props.handleEditProperty}
             onCancel={this.props.closeFormPropertyArchitect} />
-        break;
+            break;
+
           case 'NewBuilding':
             form = <FormArchitectPropertyBuildings 
             onSubmit={this.props.handleSubmitProperty}
             onCancel={this.props.closeFormPropertyArchitect} />
             break;
+
           case 'NewFolder':
-                form = <FormFolderPrototyper 
-                onSubmit={this.props.handleSubmitPrototyper}
-                onCancel={this.props.closeFormAreaPrototyper} />
-            break; 
+            form = <FormFolderPrototyper 
+            onSubmit={this.props.handleSubmitPrototyper}
+            onCancel={this.props.closeFormAreaPrototyper}
+            mode = {"New"} />
+            break;
+          case 'PreviewFolder':
+            form = <FormFolderPrototyper 
+            id = {this.props.idOfFolder}
+            mode = {"Preview"}
+            onCancel={this.props.closeFormAreaPrototyper} />
+            break;
+          case 'EditFolder':
+            form = <FormEditFolder
+            id = {this.props.idOfFolder}
+            mode = {"Edit"}
+            onSubmit={this.props.handleEditFolder}
+            onCancel={this.props.closeFormAreaPrototyper} />
+              break; 
+
           default:
             form = <div>{'BYE'}</div>;
             break;

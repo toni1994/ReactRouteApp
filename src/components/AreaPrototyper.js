@@ -5,7 +5,10 @@ import MultiSearch from './MultiSearch';
 import Panel from './Panel';
 import NewButton from './NewButton';
 import { bindActionCreators } from 'redux';
-import { openModalNewFolder, closeModalNewFolder, addNewPrototyper, changeSortAreaPrototyperFolder, changeSerachAreaPrototyperFolder } from '../redux/actions/index'
+import { openModalNewFolder, closeModalNewFolder, addNewPrototyper, 
+  changeSortAreaPrototyperFolder, changeSerachAreaPrototyperFolder,
+  updateFolder, deleteFolder, selectFolder } from '../redux/actions/index'
+import DropDown from './DropDown';
 
 import getSort from '../utilis/sort';
 
@@ -20,6 +23,12 @@ export class AreaPrototyper extends React.Component{
       this.handleSubmitPrototyper=this.handleSubmitPrototyper.bind(this);
       this.updateSort=this.updateSort.bind(this);
       this.changeInputValue= this.changeInputValue.bind(this);
+      this.deleteFolder=this.deleteFolder.bind(this);
+      this.previewFolder=this.previewFolder.bind(this);
+      this.editFolder=this.editFolder.bind(this);
+      this.handleEditFolder= this.handleEditFolder.bind(this);
+      this.idOfFolder = undefined;
+      this.typeOfPanel = "NewFolder";
   };
 
   
@@ -33,6 +42,12 @@ export class AreaPrototyper extends React.Component{
 
   closeFormAreaPrototyper(){
     this.props.actions.closeModalNewFolder();
+    this.typeOfPanel = "NewFolder";
+}
+
+handleEditFolder(updatePropertyData){
+  console.log(updatePropertyData)
+  this.props.actions.updateFolder(updatePropertyData);
 }
 
   updateSort(newValue){
@@ -43,6 +58,23 @@ export class AreaPrototyper extends React.Component{
     this.props.actions.changeSerachAreaPrototyperFolder(newValue)
   }
 
+  deleteFolder(idOfFolder){
+    this.props.actions.deleteFolder(idOfFolder)
+  }
+
+  previewFolder(idOfFolder){
+      this.idOfFolder = idOfFolder
+      this.typeOfPanel = "PreviewFolder";
+      this.props.actions.openModalNewFolder();
+  }
+
+  editFolder(idOfFolder){
+      this.idOfFolder = idOfFolder
+      this.typeOfPanel = "EditFolder";
+      this.props.actions.openModalNewFolder();
+  }
+
+
   render(){
     return (
    
@@ -52,13 +84,15 @@ export class AreaPrototyper extends React.Component{
                 isOpen={this.props.form !== undefined}
                 handleSubmitPrototyper={this.handleSubmitPrototyper}
                 closeFormAreaPrototyper={this.closeFormAreaPrototyper}
-                type={"NewFolder"}
+                handleEditFolder= {this.handleEditFolder}
+                id={this.idOfFolder}
+                type={this.typeOfPanel}
           />
          <NewButton  open={this.props.actions.openModalNewFolder} />
         <div className={style.grid}>
           { this.props.folders.map((item,index) => {
             return ( 
-            <div className={style.moduleBodyContainer} key={index}>   
+            <div className={style.moduleBodyContainer } onClick={()=>{this.props.actions.selectFolder(item.id)}} key={index}>   
             <div className={style.moduleBodyContent}>
                 <div className={style.folder}>
                     <FaFolderOpenO /> 
@@ -67,7 +101,8 @@ export class AreaPrototyper extends React.Component{
                       <div className={style.numberOfItems}> {item.numProtoypes} ITEMS </div>
                     </div> 
                 </div>
-                <div className={style.folderProps}>  <FaEllipsisV /> </div>
+                <div className={style.folderProps}>  <DropDown idItem={item.id} deleteItem={this.deleteFolder} 
+                previewItem={this.previewFolder} editItem={this.editFolder} /> </div>
             </div> 
           </div>)
           })}
@@ -96,6 +131,9 @@ function mapDispatchToProps(dispatch) {
         addNewPrototyper,
         changeSortAreaPrototyperFolder,
         changeSerachAreaPrototyperFolder,
+        deleteFolder,
+        updateFolder,
+        selectFolder
       },
       dispatch,
     ),

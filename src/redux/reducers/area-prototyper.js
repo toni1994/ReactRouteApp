@@ -1,4 +1,5 @@
-import { OPEN_MODAL_NEW_FOLDER, CLOSE_MODAL_NEW_FOLDER, ADD_NEW_PROTOTYPER } from '../actions/index';
+import { OPEN_MODAL_NEW_FOLDER, CLOSE_MODAL_NEW_FOLDER, 
+    ADD_NEW_PROTOTYPER, DELETE_FOLDER, UPDATE_FOLDER, SELECT_FOLDER } from '../actions/index';
 
 const initialState = {
     folders: [{
@@ -11,7 +12,8 @@ const initialState = {
         name: "Casino",
         numProtoypes: 2
     }],
-    form: undefined
+    form: undefined,
+    selectedFolder: undefined,
 }
 
 export default function reducer(state = initialState , action){
@@ -37,6 +39,33 @@ export default function reducer(state = initialState , action){
                     }],
                     form: undefined,
         }
+    case UPDATE_FOLDER: 
+        const idUpdate = state.selectedFolder;
+    return {
+      ...state,
+      folders: [
+        ...state.folders.slice(0, idUpdate),
+        {   id: idUpdate,
+            name: action.payload.folderName},
+        ...state.folders.slice(idUpdate + 1, state.folders.length),  
+      ], form: undefined,
+    };
+
+    case SELECT_FOLDER:
+    return {
+            ...state,
+            selectedFolder: action.payload,
+    }
+    case DELETE_FOLDER:
+        const id = action.payload;
+        const index = state.folders.findIndex(item => item.id === id);
+        return {
+          ...state,
+          folders: [
+            ...state.folders.slice(0, index),
+            ...state.folders.slice(index + 1, state.folders.length),
+          ],
+        };
         default:
     return state;
 }
