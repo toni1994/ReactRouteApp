@@ -50,6 +50,8 @@
     font-weight: 300;
     font-size: 12px;
     transition: 0.2s; }
+    .input input inputFolder {
+      width: 200px; }
     .input input:focus {
       outline: none;
       border-color: color(blue); }

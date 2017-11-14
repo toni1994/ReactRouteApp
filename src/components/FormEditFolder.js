@@ -26,7 +26,7 @@ const renderFormField = ({
   }) => (
     <div className={style.inputContainer}>
       <div className={style.label}>  <label >{label}</label> </div>
-      <div className={style.input}>
+      <div className={style.inputFolder}>
       <FormField {...input} {...props} value={editValue} placeholder={label} type={type} />
       </div>
       <div className={style.error}>  {touched &&
