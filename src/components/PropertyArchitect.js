@@ -8,13 +8,11 @@ import NewButton from './NewButton';
 import { openModalNewProperty, closeModalNewProperty, 
     addNewProperty, changeSortPropertyArchitect, 
     changeSearchPropertyArchitect, selectedProperty, 
-    deleteProperty,updateProperty } from '../redux/actions/index'
-import { push } from 'react-router-redux';
+    deleteProperty,updateProperty } from '../redux/actions/index';
 import { history } from '../services/index' 
 import getSort from '../utilis/sort';
 import DropDown from './DropDown';
 
-import FaEllipsisV from 'react-icons/lib/fa/ellipsis-v'
 import { withRouter } from 'react-router';
 
 export class PropertyArchitect extends React.Component{
@@ -38,10 +36,12 @@ export class PropertyArchitect extends React.Component{
 
     handleSubmitProperty(newPropertyData){
         this.props.actions.addNewProperty(newPropertyData);
+        this.typeOfPanel = "NewProperty";
     }
 
     handleEditProperty(updatePropertyData){
         this.props.actions.updateProperty( updatePropertyData);
+        this.typeOfPanel = "NewProperty";
     }
 
     closeFormPropertyArchitect(){

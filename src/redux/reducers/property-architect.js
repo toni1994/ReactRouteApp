@@ -99,7 +99,7 @@ export default function reducer(state = initialState , action){
             address: action.payload.address,
             phone: action.payload.phone,},
         ...state.properties.slice(idUpdate + 1, state.properties.length),  
-      ], form: undefined,
+      ], form: undefined
     };
 
     case SELECTED_PROPERTY:
@@ -115,7 +115,7 @@ export default function reducer(state = initialState , action){
           properties: [
             ...state.properties.slice(0, index),
             ...state.properties.slice(index + 1, state.properties.length),
-          ],
+          ], 
         };
     default: 
     return state

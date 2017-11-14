@@ -7,7 +7,6 @@ class FormField extends React.Component {
     super(props);
     this.change = this.change.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    console.log(this.props)
     this.state = {
       value: this.props.value || '',
     };

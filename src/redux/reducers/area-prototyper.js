@@ -4,12 +4,12 @@ import { OPEN_MODAL_NEW_FOLDER, CLOSE_MODAL_NEW_FOLDER,
 const initialState = {
     folders: [{
         id: 0,
-        name: "Bar",
+        name: "Casino",
         numProtoypes: 4
     },
     {
         id: 1,
-        name: "Casino",
+        name: "Bar",
         numProtoypes: 2
     }],
     form: undefined,
@@ -33,7 +33,7 @@ export default function reducer(state = initialState , action){
                 ...state,
                 folders :[...state.folders, 
                     {
-                        id: state.folders.length + 1,
+                        id: state.folders.length,
                         name: action.payload.folderName,
                         numProtoypes: 0
                     }],
@@ -46,7 +46,8 @@ export default function reducer(state = initialState , action){
       folders: [
         ...state.folders.slice(0, idUpdate),
         {   id: idUpdate,
-            name: action.payload.folderName},
+            name: action.payload.folderName,
+            numProtoypes: 4},
         ...state.folders.slice(idUpdate + 1, state.folders.length),  
       ], form: undefined,
     };

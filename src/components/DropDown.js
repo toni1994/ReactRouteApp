@@ -3,7 +3,6 @@ import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
-import Divider from 'material-ui/Divider';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RemoveRedEye from 'material-ui/svg-icons/image/remove-red-eye';
 import Delete from 'material-ui/svg-icons/action/delete';

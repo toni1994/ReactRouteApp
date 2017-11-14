@@ -13,7 +13,6 @@ import DropDown from './DropDown';
 import getSort from '../utilis/sort';
 
 import FaFolderOpenO from 'react-icons/lib/fa/folder-open-o'
-import FaEllipsisV from 'react-icons/lib/fa/ellipsis-v'
 import { withRouter } from 'react-router';
 
 export class AreaPrototyper extends React.Component{
@@ -38,6 +37,7 @@ export class AreaPrototyper extends React.Component{
 
   handleSubmitPrototyper(newPrototyperData){
     this.props.actions.addNewPrototyper(newPrototyperData);
+    this.typeOfPanel = "NewFolder";
 }
 
   closeFormAreaPrototyper(){
@@ -46,8 +46,8 @@ export class AreaPrototyper extends React.Component{
 }
 
 handleEditFolder(updatePropertyData){
-  console.log(updatePropertyData)
   this.props.actions.updateFolder(updatePropertyData);
+  this.typeOfPanel = "NewFolder";
 }
 
   updateSort(newValue){

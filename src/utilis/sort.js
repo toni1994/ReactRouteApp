@@ -16,14 +16,14 @@ const getSort = (folders,sortMode,searchValue) =>
 }
 
 const sortAsc = (valA, valB) => {
-    if (valA.name > valB.name) return 1;
-    if (valA.name < valB.name) return -1;
+    if (valA.name.toUpperCase() > valB.name.toUpperCase()) return 1;
+    if (valA.name.toUpperCase() < valB.name.toUpperCase()) return -1;
     return 0;
   };
   
   const sortDesc = (valA, valB) => {
-    if (valA.name > valB.name) return -1;
-    if (valA.name < valB.name) return 1;
+    if (valA.name.toUpperCase() > valB.name.toUpperCase()) return -1;
+    if (valA.name.toUpperCase() < valB.name.toUpperCase()) return 1;
     return 0;
 };
 
