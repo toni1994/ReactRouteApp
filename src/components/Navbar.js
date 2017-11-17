@@ -10,17 +10,17 @@ const imgLocal = require('../images/helius_logo.png');
 class Navbar extends Component {
   constructor(props){
     super(props);
-    this.aa=this.aa.bind(this);
-    this.bb=this.bb.bind(this);
+    this.goToAreaPrototyper=this.goToAreaPrototyper.bind(this);
+    this.goToPropertyArchitect=this.goToPropertyArchitect.bind(this);
     
   }
 
-  aa(){
+  goToAreaPrototyper(){
     history.push('/area-prototyper');
     console.log(window.history);
   }
 
-  bb(){
+  goToPropertyArchitect(){
     history.push('/property-architect');
     console.log(window.history);
   }
@@ -34,8 +34,8 @@ class Navbar extends Component {
               <div className={style.title}>{'helius'}</div>
             </div>
             <div className={style.wrapper}>
-                <div className={style.container} onClick={this.aa} > Prototyper </div>
-                <div className={style.container} onClick={this.bb} > Property Architect </div>    
+                <div className={style.container} onClick={this.goToAreaPrototyper} > Prototyper </div>
+                <div className={style.container} onClick={this.goToPropertyArchitect} > Property Architect </div>    
             </div>
         </div>
     );

@@ -65,7 +65,7 @@ export default function reducer(state = initialState , action){
             ...state,
             properties :[...state.properties, 
                 {
-                    id: state.properties.length,
+                    id: state.properties.length+1,
                     name: action.payload.name,
                     imagePath: "http://api.helius.proficodev.com/public/uploads/building/436b8a0898b01484144240789.jpeg",
                     managerName: action.payload.managerName,
