@@ -1,0 +1,58 @@
+.priceContainer {
+  display: flex;
+  background-color: white;
+  height: 100%;
+  padding: 20px; }
+
+.disCountTable {
+  display: flex;
+  width: 50%;
+  background-color: white;
+  flex-direction: column; }
+
+.disCount {
+  display: flex; }
+
+.priceTable {
+  display: flex;
+  width: 50%;
+  flex-direction: column; }
+
+.checkbox {
+  flex-direction: row;
+  width: 40px; }
+
+.input {
+  flex-direction: row;
+  height: 25px;
+  width: 40px; }
+
+.label {
+  flex-direction: row;
+  margin-left: 20px; }
+
+.inputDiv {
+  flex-direction: row; }
+
+.priceTableRow {
+  display: flex;
+  height: 40px;
+  border-style: groove;
+  border-width: 1px;
+  text-align: center; }
+
+.code {
+  flex-direction: row;
+  width: 25%; }
+
+.officeFree {
+  flex-direction: row;
+  width: 25%; }
+
+.discount {
+  flex-direction: row;
+  width: 25%; }
+
+.newValue {
+  flex-direction: row;
+  width: 25%; }

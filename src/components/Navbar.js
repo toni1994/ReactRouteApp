@@ -12,7 +12,7 @@ class Navbar extends Component {
     super(props);
     this.goToAreaPrototyper=this.goToAreaPrototyper.bind(this);
     this.goToPropertyArchitect=this.goToPropertyArchitect.bind(this);
-    
+    this.goToPriceList=this.goToPriceList.bind(this);
   }
 
   goToAreaPrototyper(){
@@ -22,6 +22,11 @@ class Navbar extends Component {
 
   goToPropertyArchitect(){
     history.push('/property-architect');
+    console.log(window.history);
+  }
+
+  goToPriceList(){
+    history.push('/price-list');
     console.log(window.history);
   }
   
@@ -36,6 +41,7 @@ class Navbar extends Component {
             <div className={style.wrapper}>
                 <div className={style.container} onClick={this.goToAreaPrototyper} > Prototyper </div>
                 <div className={style.container} onClick={this.goToPropertyArchitect} > Property Architect </div>    
+                <div className={style.container} onClick={this.goToPriceList} > Price List </div>
             </div>
         </div>
     );
