@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import Checkbox from 'material-ui/Checkbox';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import style from '../styles/PriceList.scss';
+import FormPrice from './FormPrice';
 
 class PriceList extends React.Component{
     constructor(props){
@@ -26,22 +28,7 @@ class PriceList extends React.Component{
         return (
         <MuiThemeProvider>
             <div className={style.priceContainer}>
-            <div className={style.disCountTable}>
-            { this.props.priceList.map((item,index)=>{
-                    return ( 
-                        <div className={style.disCount}>
-                        <div className={style.checkbox}> <Checkbox
-                        key={index}
-                        checked={item.disCountEnable}
-                        onCheck={this.updateCheck.bind(this)}
-                        style={styles.checkbox}
-                        />
-                    </div>
-                     <div  className={style.inputDiv} > <input className={style.input}/> % </div> <div className={style.label}> {item.CDTcodes} Diagnostic </div>
-                   </div>   )
-                  
-            })}
-            </div> 
+             <FormPrice priceList={this.props.priceList}/>
              <div className={style.priceTable}>
                 <div className={style.priceTableRow}>
                     <div className={style.code}> Common CDT Codes </div>
@@ -62,15 +49,6 @@ class PriceList extends React.Component{
     </MuiThemeProvider>
 )}
 }
-
-const styles = {
-    block: {
-    },
-    checkbox: {
-      marginBottom: 16,
-      maxWidth: 40,
-    },
-  };
 
   function mapStateToProps(state){
     return {
