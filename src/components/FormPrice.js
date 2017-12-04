@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
 import Checkbox from 'material-ui/Checkbox';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
@@ -8,6 +7,7 @@ import { reduxForm, Field } from 'redux-form';
 import style from '../styles/PriceList.scss';
 
 const CheckboxPrice = ({
+    input,
     type,
     label,
     item,
@@ -23,6 +23,7 @@ const CheckboxPrice = ({
      </div>
   )
   const DiscountInput = ({
+    input,
     type,
     label,
     item,
@@ -30,11 +31,15 @@ const CheckboxPrice = ({
     ...props,
   }) => (
     <div  className={style.inputDiv} >
-        <input className={style.input}/> % 
+        <input {...input} onBlur={()=> {changePrice(index)}} className={style.input}/> % 
     </div> 
   )
 
+  const changePrice = (index,props) => {
+    console.log(index)
+  }
   const disCountCategory = ({
+    input,
     type,
     label,
     item,
@@ -55,7 +60,6 @@ const CheckboxPrice = ({
     </div>
 
   )
-
 
 let PriceList = (props) => (
             <div className={style.disCountTable}>

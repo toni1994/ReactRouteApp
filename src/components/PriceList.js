@@ -2,14 +2,17 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import Checkbox from 'material-ui/Checkbox';
+import { bindActionCreators } from 'redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
+import { changeDisCount } from '../redux/actions/index';
 import style from '../styles/PriceList.scss';
 import FormPrice from './FormPrice';
 
 class PriceList extends React.Component{
     constructor(props){
         super(props);
+        this.changeDisCount=this.changeDisCount.bind(this);
         this.state = {
             checked: false,
           }
@@ -23,12 +26,15 @@ class PriceList extends React.Component{
         });
       }
     
+    changeDisCount(){
+        console.log("HAHAH")
+    }
 
     render(){
         return (
         <MuiThemeProvider>
             <div className={style.priceContainer}>
-             <FormPrice priceList={this.props.priceList}/>
+             <FormPrice priceList={this.props.priceList} changePrice={this.changeDisCount}/>
              <div className={style.priceTable}>
                 <div className={style.priceTableRow}>
                     <div className={style.code}> Common CDT Codes </div>
@@ -56,4 +62,15 @@ class PriceList extends React.Component{
     }
 }
 
-export default connect(mapStateToProps,null)(withRouter (PriceList));
+function mapDispatchToProps(dispatch) {
+    return {
+      actions: bindActionCreators(
+        {
+            
+        },
+        dispatch,
+      ),
+    };
+  }
+
+export default connect(mapStateToProps,mapDispatchToProps)(withRouter (PriceList));

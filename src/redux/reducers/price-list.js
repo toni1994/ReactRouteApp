@@ -1,3 +1,5 @@
+import { CHANGE_DISCOUNT } from '../actions/index';
+
 const initialState = {
     flatDisCount: 10,
     disCountByCategory: false,
@@ -48,6 +50,19 @@ const initialState = {
 
 export default function reducer(state = initialState , action){
     switch (action.type) {
+        case CHANGE_DISCOUNT:
+            const idUpdate = action.payload.id;
+            return {
+                ...state,
+                product: [
+                    ...state.product.slice(0, idUpdate),
+                    {   CDTcodes: 105,
+                        officeFree: 700,
+                        disCountEnable: true,
+                        disCount: action.payload.disCount,},
+                    ...state.product.slice(idUpdate + 1, state.product.length), 
+                ]
+            }
         default: return state
     }
 }

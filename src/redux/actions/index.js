@@ -67,5 +67,9 @@ export const selectFolder = createAction(SELECT_FOLDER);
 
 
 
+export const CHANGE_DISCOUNT = 'CHANGE_DISCOUNT';
+export const changeDisCount = createAction(CHANGE_DISCOUNT);
+
+
 
 

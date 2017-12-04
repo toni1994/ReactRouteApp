@@ -78,9 +78,7 @@ export class Panel extends React.Component {
         const {props} = this;
         return(
             <div className={classNames([style.container, !props.isOpen && style.close])}>
-                {this.handleForm(props.type)}
-          {console.log(history)}
-                
+                {this.handleForm(props.type)}     
             </div>
 
         )
