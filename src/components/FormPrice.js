@@ -17,8 +17,9 @@ const CheckboxPrice = ({
     <div className={style.checkbox}>
     <Checkbox
     key={index}
-    checked={item.disCountEnable}
+    //checked={item.disCountEnable}
     style={styles.checkbox}
+    onCheck = {props.checkPrice}
     />
      </div>
   )
@@ -31,13 +32,10 @@ const CheckboxPrice = ({
     ...props,
   }) => (
     <div  className={style.inputDiv} >
-        <input {...input} onBlur={()=> {changePrice(index)}} className={style.input}/> % 
+        <input {...input}  className={style.input} type="number"/> % 
     </div> 
   )
 
-  const changePrice = (index,props) => {
-    console.log(index)
-  }
   const disCountCategory = ({
     input,
     type,
@@ -62,8 +60,9 @@ const CheckboxPrice = ({
   )
 
 let PriceList = (props) => (
-            <div className={style.disCountTable}>
+            <div className={style.disCountTable} >
             <form>
+            <Field name="AlldisCount" component={DiscountInput}/>
              <Field name="disCountCategory" component={disCountCategory}/>
             { props.priceList.map((item,index)=>{
                     return ( 

@@ -13,6 +13,7 @@ class PriceList extends React.Component{
     constructor(props){
         super(props);
         this.changeDisCount=this.changeDisCount.bind(this);
+        this.checkPrice= this.checkPrice.bind(this);
         this.state = {
             checked: false,
           }
@@ -30,11 +31,15 @@ class PriceList extends React.Component{
         console.log("HAHAH")
     }
 
+    checkPrice(){
+        console.log("HAHAH")
+    }
+
     render(){
         return (
         <MuiThemeProvider>
             <div className={style.priceContainer}>
-             <FormPrice priceList={this.props.priceList} changePrice={this.changeDisCount}/>
+             <FormPrice priceList={this.props.priceList} changePrice={this.changeDisCount} checkPrice={this.checkPrice} />
              <div className={style.priceTable}>
                 <div className={style.priceTableRow}>
                     <div className={style.code}> Common CDT Codes </div>

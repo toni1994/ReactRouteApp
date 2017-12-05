@@ -62,6 +62,14 @@ export default function reducer(state = initialState , action){
                         disCount: action.payload.disCount,},
                     ...state.product.slice(idUpdate + 1, state.product.length), 
                 ]
+            } 
+        case "@@redux-form/BLUR":
+            return {
+                ...state,
+                product: [  {   CDTcodes: 105,
+                    officeFree: 700,
+                    disCountEnable: true,
+                    disCount: action.payload}, ...state.product]
             }
         default: return state
     }
