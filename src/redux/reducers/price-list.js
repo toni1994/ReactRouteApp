@@ -66,10 +66,13 @@ export default function reducer(state = initialState , action){
         case "@@redux-form/BLUR":
             return {
                 ...state,
-                product: [  {   CDTcodes: 105,
-                    officeFree: 700,
-                    disCountEnable: true,
-                    disCount: action.payload}, ...state.product]
+                product: state.product.map((item,index) => { return {
+                    CDTcodes: item.CDTcodes,
+                    officeFree: item.officeFree,
+                    disCountEnable: item.disCountEnable,
+                    disCount: action.payload
+
+                }}),
             }
         default: return state
     }

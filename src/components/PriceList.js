@@ -8,6 +8,7 @@ import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import { changeDisCount } from '../redux/actions/index';
 import style from '../styles/PriceList.scss';
 import FormPrice from './FormPrice';
+import FormPriceTable from './FormPriceTable';
 
 class PriceList extends React.Component{
     constructor(props){
@@ -47,13 +48,7 @@ class PriceList extends React.Component{
                     <div className={style.discount}>  Discount </div>
                     <div className={style.newValue}> New Value </div>
                 </div>
-                { this.props.priceList.map((item,index)=>{
-                    return (  <div className={style.priceTableRow}>
-                        <div className={style.code}> {item.CDTcodes} </div>
-                        <div className={style.officeFree} > <input className={style.input}/> </div> 
-                        <div className={style.discount}>  {item.disCount} </div>
-                        <div className={style.newValue}> New Value </div>
-                    </div> )})}
+                <FormPriceTable/>
                
              </div>
             </div>

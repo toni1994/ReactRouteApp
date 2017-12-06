@@ -29,10 +29,11 @@ const CheckboxPrice = ({
     label,
     item,
     index,
+    value,
     ...props,
   }) => (
     <div  className={style.inputDiv} >
-        <input {...input}  className={style.input} type="number"/> % 
+        <input {...input} value={value}  className={style.input} type="number"/> % 
     </div> 
   )
 
@@ -47,11 +48,11 @@ const CheckboxPrice = ({
     <div className={style.disCount}>
             <RadioButtonGroup name="shipSpeed" defaultSelected="not_light">
             <RadioButton
-                value="light"
+                value={true}
                 label="Simple"
             />
             <RadioButton
-                value="not_light"
+                value={false}
                 label="Discount by category"
             />
              </RadioButtonGroup>    
@@ -68,7 +69,7 @@ let PriceList = (props) => (
                     return ( 
                         <div className={style.disCount}>
                         <Field name="disCountEnable" component={CheckboxPrice} index={index} item={item}/>
-                        <Field name="disCount" component={DiscountInput} index={index} item={item}/>
+                        <Field name="disCount" value={item.disCount} component={DiscountInput} index={index} item={item}/>
                         <div className={style.label}> {item.CDTcodes} Diagnostic 
                         </div>
                    </div>   )
