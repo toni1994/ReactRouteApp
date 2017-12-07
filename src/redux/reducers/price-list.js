@@ -74,6 +74,18 @@ export default function reducer(state = initialState , action){
 
                 }}),
             }
+            case "@@redux-form/CHANGE":
+            return {
+                ...state,
+                product: state.product.map((item,index) => { return {
+                    CDTcodes: item.CDTcodes,
+                    officeFree: item.officeFree,
+                    disCountEnable: false,
+                    disCount: item.disCount
+
+                }}),
+            }
+           
         default: return state
     }
 }

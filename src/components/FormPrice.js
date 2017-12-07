@@ -1,9 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Checkbox from 'material-ui/Checkbox';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
-import { reduxForm, Field } from 'redux-form';
+import { reduxForm, Field, FieldArray} from 'redux-form';
 import style from '../styles/PriceList.scss';
 
 const CheckboxPrice = ({
@@ -17,9 +16,9 @@ const CheckboxPrice = ({
     <div className={style.checkbox}>
     <Checkbox
     key={index}
-    //checked={item.disCountEnable}
+    onCheck={input.onChange}
+    checked={item.disCountEnable}
     style={styles.checkbox}
-    onCheck = {props.checkPrice}
     />
      </div>
   )
@@ -33,7 +32,7 @@ const CheckboxPrice = ({
     ...props,
   }) => (
     <div  className={style.inputDiv} >
-        <input {...input} value={value}  className={style.input} type="number"/> % 
+        <input {...input} value={value} className={style.input} type="number"/> % 
     </div> 
   )
 
@@ -46,13 +45,13 @@ const CheckboxPrice = ({
     ...props,
   }) => (
     <div className={style.disCount}>
-            <RadioButtonGroup name="shipSpeed" defaultSelected="not_light">
+            <RadioButtonGroup  {...input} name="shipSpeed" defaultSelected="not_light" onChange={(event, value) => input.onChange(value)}>
             <RadioButton
-                value={true}
+                value="DA"
                 label="Simple"
             />
             <RadioButton
-                value={false}
+                value="NE"
                 label="Discount by category"
             />
              </RadioButtonGroup>    
@@ -60,21 +59,36 @@ const CheckboxPrice = ({
 
   )
 
-let PriceList = (props) => (
-            <div className={style.disCountTable} >
-            <form>
-            <Field name="AlldisCount" component={DiscountInput}/>
-             <Field name="disCountCategory" component={disCountCategory}/>
-            { props.priceList.map((item,index)=>{
+  const priceList = ({
+    input,
+    type,
+    label,
+    item,
+    index,
+    ...props,
+    priceList
+  }) => (
+    <div>
+         { priceList.map((item,index)=>{
                     return ( 
-                        <div className={style.disCount}>
+                        <div className={style.disCount} key={index}>
                         <Field name="disCountEnable" component={CheckboxPrice} index={index} item={item}/>
-                        <Field name="disCount" value={item.disCount} component={DiscountInput} index={index} item={item}/>
+                        <Field name={"disCount"+index} value={item.disCount} component={DiscountInput} index={index} item={item}/>
+                        <input {...input} value={index} type="hidden"/>
                         <div className={style.label}> {item.CDTcodes} Diagnostic 
                         </div>
                    </div>   )
                   
-            })}
+            })} 
+    </div>
+  )
+
+let PriceList = (props) => (
+            <div className={style.disCountTable} >
+            <form>
+            <Field name="AlldisCount" component={DiscountInput}/>
+            <Field name="disCountCategory" component={disCountCategory}/>
+            <FieldArray name="price" component={priceList} priceList={props.priceList} />
             </form> 
             </div>
 )

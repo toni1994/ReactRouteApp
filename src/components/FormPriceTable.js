@@ -1,8 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Checkbox from 'material-ui/Checkbox';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import { reduxForm, Field } from 'redux-form';
 import style from '../styles/PriceList.scss';
 

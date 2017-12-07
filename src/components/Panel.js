@@ -5,7 +5,6 @@ import FormArchitectPropertyBuildings from './FormArchitectPropertyBuildings';
 import FormEditPropArchitectProperty from './FormEditPropArchitectProperty';
 import FormEditFolder from './FormEditFolder';
 import classNames from 'classnames';
-import { history } from '../services/index'
 
 import style from '../styles/Panel.scss';
 
