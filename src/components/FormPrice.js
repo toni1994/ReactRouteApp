@@ -60,12 +60,14 @@ const CheckboxPrice = ({
     item,
     index,
     ...props,
+    disCountByCategory
   }) => (
     <div className={style.disCount}>
             <RadioButtonGroup  {...input} name="shipSpeed" defaultSelected="All" onChange={(event, value) => input.onChange(value)}>
             <RadioButton
                 value="All"
-                label="Flat Discount Across All Procedure Categories"
+                inputStyle = {styles.radioBottun}
+                label= {<div> <Field name="AlldisCount" disCountByCategory={disCountByCategory} flatDisCount={props.flatDisCount}  component={DiscountAllInput}/> Flat Discount Across All Procedure Categories </div>}
             />
             <RadioButton
                 value="Category"
@@ -104,8 +106,7 @@ const CheckboxPrice = ({
 let PriceList = (props) => (
             <div className={style.disCountTable} >
             <form>
-            <Field name="AlldisCount" disCountByCategory={!props.disCountByCategory} flatDisCount={props.flatDisCount}  component={DiscountAllInput}/>
-            <Field name="disCountCategory" component={disCountCategory}/>
+            <Field name="disCountCategory" disCountByCategory={!props.disCountByCategory} component={disCountCategory}/>
             <FieldArray name="price" component={priceList} priceList={props.priceList} disCountByCategory={props.disCountByCategory} />
             </form> 
             </div>
@@ -119,6 +120,9 @@ const styles = {
       marginBottom: 16,
       maxWidth: 40,
     },
+    radioBottun: {
+      width: '35px'
+    }
   };
 
 PriceList = reduxForm({
