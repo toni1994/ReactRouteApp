@@ -2,7 +2,7 @@ import { CHANGE_DISCOUNT } from '../actions/index';
 
 const initialState = {
     flatDisCount: 10,
-    disCountByCategory: false,
+    disCountByCategory: true,
     product:[{
         CDTcodes: 100,
         officeFree: 230,
@@ -41,7 +41,7 @@ const initialState = {
     },
     {
         CDTcodes: 106,
-        officeFree: 1000,
+        officeFree: 950,
         disCountEnable: false,
         disCount: 25
     },
@@ -63,28 +63,63 @@ export default function reducer(state = initialState , action){
                     ...state.product.slice(idUpdate + 1, state.product.length), 
                 ]
             } 
-        case "@@redux-form/BLUR":
+            case "@@redux-form/CHANGE":
+            if(action.meta.field === "AlldisCount")
             return {
                 ...state,
+                flatDisCount: action.payload,
                 product: state.product.map((item,index) => { return {
                     CDTcodes: item.CDTcodes,
                     officeFree: item.officeFree,
                     disCountEnable: item.disCountEnable,
-                    disCount: action.payload
-
+                    disCount: item.disCount
                 }}),
             }
-            case "@@redux-form/CHANGE":
+            else if(action.meta.field === "disCountCategory")
             return {
                 ...state,
-                product: state.product.map((item,index) => { return {
-                    CDTcodes: item.CDTcodes,
-                    officeFree: item.officeFree,
-                    disCountEnable: false,
-                    disCount: item.disCount
-
-                }}),
+                disCountByCategory: !state.disCountByCategory
             }
+            else if(action.meta.field.includes("CategorydisCount")){
+                const index=Number(action.meta.field.slice(16));
+            return {
+                ...state,
+                product: [
+                  ...state.product.slice(0, index),
+                  { CDTcodes: state.product[index].CDTcodes,
+                    officeFree: state.product[index].officeFree,
+                    disCountEnable: state.product[index].disCountEnable,
+                    disCount: action.payload},
+                  ...state.product.slice(index + 1, state.product.length),  
+                ]
+            }}
+            else if(action.meta.field.includes("officeFree")){
+                const index=Number(action.meta.field.slice(10));
+            return {
+                ...state,
+                product: [
+                  ...state.product.slice(0, index),
+                  { CDTcodes: state.product[index].CDTcodes,
+                    officeFree: action.payload,
+                    disCountEnable: state.product[index].disCountEnable,
+                    disCount: state.product[index].disCount},
+                  ...state.product.slice(index + 1, state.product.length),  
+                ]
+            }}
+            else if(action.meta.field.includes("disCountEnable")){
+                const index=Number(action.meta.field.slice(14));
+            return {
+                ...state,
+                product: [
+                  ...state.product.slice(0, index),
+                  { CDTcodes: state.product[index].CDTcodes,
+                    officeFree: state.product[index].officeFree,
+                    disCountEnable: !state.product[index].disCountEnable,
+                    disCount: state.product[index].disCount},
+                  ...state.product.slice(index + 1, state.product.length),  
+                ]
+            }}
+            else return state
            
         default: return state
     }
