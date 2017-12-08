@@ -60,14 +60,15 @@ const CheckboxPrice = ({
     item,
     index,
     ...props,
-    disCountByCategory
+    disCountByCategory,
+    flatDisCount
   }) => (
     <div className={style.disCount}>
             <RadioButtonGroup  {...input} name="shipSpeed" defaultSelected="All" onChange={(event, value) => input.onChange(value)}>
             <RadioButton
                 value="All"
                 inputStyle = {styles.radioBottun}
-                label= {<div> <Field name="AlldisCount" disCountByCategory={disCountByCategory} flatDisCount={props.flatDisCount}  component={DiscountAllInput}/> Flat Discount Across All Procedure Categories </div>}
+                label= {<div> <Field name="AlldisCount" disCountByCategory={disCountByCategory} flatDisCount={flatDisCount}  component={DiscountAllInput}/> Flat Discount Across All Procedure Categories </div>}
             />
             <RadioButton
                 value="Category"
@@ -92,7 +93,7 @@ const CheckboxPrice = ({
          { priceList.map((item,index)=>{
                     return ( 
                         <div className={style.disCount} key={index}>
-                        <Field name={"disCountEnable"+ index} component={CheckboxPrice} index={index} item={item}/>
+                        <Field name={"disCountEnable"+ index} component={CheckboxPrice}  index={index} item={item}/>
                         <Field name={"CategorydisCount"+ index} value={item.disCount} component={DiscountInput} index={index} disCountByCategory={disCountByCategory} item={item} />
                         <input {...input} value={index} type="hidden"/>
                         <div className={style.label}> {item.CDTcodes} Diagnostic 
@@ -106,7 +107,7 @@ const CheckboxPrice = ({
 let PriceList = (props) => (
             <div className={style.disCountTable} >
             <form>
-            <Field name="disCountCategory" disCountByCategory={!props.disCountByCategory} component={disCountCategory}/>
+            <Field name="disCountCategory" disCountByCategory={!props.disCountByCategory} flatDisCount={props.flatDisCount} component={disCountCategory}/>
             <FieldArray name="price" component={priceList} priceList={props.priceList} disCountByCategory={props.disCountByCategory} />
             </form> 
             </div>
