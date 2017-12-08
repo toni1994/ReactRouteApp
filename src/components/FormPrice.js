@@ -93,8 +93,8 @@ const CheckboxPrice = ({
          { priceList.map((item,index)=>{
                     return ( 
                         <div className={style.disCount} key={index}>
-                        <Field name={"disCountEnable"+ index} component={CheckboxPrice}  index={index} item={item}/>
-                        <Field name={"CategorydisCount"+ index} value={item.disCount} component={DiscountInput} index={index} disCountByCategory={disCountByCategory} item={item} />
+                        <Field name={"disCountEnable"+ item.CDTcodes} component={CheckboxPrice}  index={index} item={item}/>
+                        <Field name={"CategorydisCount"+ item.CDTcodes} value={item.disCount} component={DiscountInput} index={index} disCountByCategory={disCountByCategory} item={item} />
                         <input {...input} value={index} type="hidden"/>
                         <div className={style.label}> {item.CDTcodes} Diagnostic 
                         </div>

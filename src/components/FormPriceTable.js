@@ -23,7 +23,7 @@ let priceListTable = (props) => (
         <form> { props.priceList.map((item,index)=>{
                     return (  <div className={style.priceTableRow} key={index}>
                         <div className={style.code}> {item.CDTcodes} </div>
-                        <div className={style.officeFree} > <Field name={"officeFree"+ index} officeFree={item.officeFree} component={officeFree} index={index} item={item}/> </div>
+                        <div className={style.officeFree} > <Field name={"officeFree"+ item.CDTcodes} officeFree={item.officeFree} component={officeFree} index={index} item={item}/> </div>
                         {!props.disCountByCategory ? <div className={style.discount}>  {item.disCount}  </div> : <div className={style.discount}>  {props.flatDisCount}  </div>}
                         {!props.disCountByCategory ?  <div className={style.newValue}>  {(item.officeFree - (item.officeFree * item.disCount * 0.01)).toFixed(2)}  </div> :
                           <div className={style.newValue}>  {(item.officeFree - (item.officeFree * props.flatDisCount * 0.01)).toFixed(2)}  </div>}

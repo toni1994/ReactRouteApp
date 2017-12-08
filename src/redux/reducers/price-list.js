@@ -81,7 +81,8 @@ export default function reducer(state = initialState , action){
                 disCountByCategory: !state.disCountByCategory
             }
             else if(action.meta.field.includes("CategorydisCount")){
-                const index=Number(action.meta.field.slice(16));
+                const code=Number(action.meta.field.slice(16));
+                const index = state.product.findIndex((product) => product.CDTcodes === code);
             return {
                 ...state,
                 product: [
@@ -94,7 +95,8 @@ export default function reducer(state = initialState , action){
                 ]
             }}
             else if(action.meta.field.includes("officeFree")){
-                const index=Number(action.meta.field.slice(10));
+                const code=Number(action.meta.field.slice(10));
+                const index = state.product.findIndex((product) => product.CDTcodes === code);
             return {
                 ...state,
                 product: [
@@ -107,7 +109,8 @@ export default function reducer(state = initialState , action){
                 ]
             }}
             else if(action.meta.field.includes("disCountEnable")){
-                const index=Number(action.meta.field.slice(14));
+                const code=Number(action.meta.field.slice(14));
+                const index = state.product.findIndex((product) => product.CDTcodes === code);
             return {
                 ...state,
                 product: [
