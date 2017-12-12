@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { reduxForm, Field } from 'redux-form';
+import { reduxForm, Field, FieldArray } from 'redux-form';
 import style from '../styles/PriceList.scss';
 
 
@@ -15,19 +15,37 @@ import style from '../styles/PriceList.scss';
     officeFree
   }) => (
     <div  className={style.inputDiv} >
-        <input {...input} value={officeFree}  className={style.input} type="number"/> 
+        <input {...input}  className={style.input} type="text"/> 
     </div> 
   )
 
-let priceListTable = (props) => (
-        <form> { props.priceList.map((item,index)=>{
+  const tablePriceList = ({
+    input,
+    type,
+    label,
+    item,
+    index,
+    ...props,
+    priceList,
+    disCountByCategory,
+    flatDisCount
+  }) => (
+    <div>
+         { priceList.map((item,index)=>{
                     return (  <div className={style.priceTableRow} key={index}>
+                        {console.log(`product[${index}].officeFree)`)}
                         <div className={style.code}> {item.CDTcodes} </div>
-                        <div className={style.officeFree} > <Field name={"officeFree"+ item.CDTcodes} officeFree={item.officeFree} component={officeFree} index={index} item={item}/> </div>
-                        {!props.disCountByCategory ? <div className={style.discount}>  {item.disCount}  </div> : <div className={style.discount}>  {props.flatDisCount}  </div>}
-                        {!props.disCountByCategory ?  <div className={style.newValue}>  {(item.officeFree - (item.officeFree * item.disCount * 0.01)).toFixed(2)}  </div> :
-                          <div className={style.newValue}>  {(item.officeFree - (item.officeFree * props.flatDisCount * 0.01)).toFixed(2)}  </div>}
+                        <div className={style.officeFree} > <Field name={`product[${index}].officeFree`} officeFree={item.officeFree} component={officeFree} index={index} item={item}/> </div>
+                        {!disCountByCategory ? <div className={style.discount}>  {item.disCount}  </div> : <div className={style.discount}>  {flatDisCount}  </div>}
+                        {!disCountByCategory ?  <div className={style.newValue}>  {(item.officeFree - (item.officeFree * item.disCount * 0.01)).toFixed(2)}  </div> :
+                          <div className={style.newValue}>  {(item.officeFree - (item.officeFree * flatDisCount * 0.01)).toFixed(2)}  </div>}
                     </div> )})}
+    </div>
+  )
+
+let priceListTable = (props) => (
+        <form> 
+          <FieldArray name="price" component={tablePriceList} flatDisCount={props.flatDisCount} priceList={props.priceList} disCountByCategory={props.disCountByCategory} />  
         </form>
 )
 

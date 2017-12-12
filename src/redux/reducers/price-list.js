@@ -51,6 +51,7 @@ const initialState = {
 export default function reducer(state = initialState , action){
     switch (action.type) {
         case CHANGE_DISCOUNT:
+         
             const idUpdate = action.payload.id;
             return {
                 ...state,
@@ -64,7 +65,7 @@ export default function reducer(state = initialState , action){
                 ]
             } 
             case "@@redux-form/CHANGE":
-            if(action.meta.field === "AlldisCount")
+            /*if(action.meta.field === "AlldisCount")
             return {
                 ...state,
                 flatDisCount: action.payload,
@@ -122,7 +123,7 @@ export default function reducer(state = initialState , action){
                   ...state.product.slice(index + 1, state.product.length),  
                 ]
             }}
-            else return state
+            else return state*/
            
         default: return state
     }

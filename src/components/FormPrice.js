@@ -34,6 +34,7 @@ const CheckboxPrice = ({
   }) => (
     <div  className={style.inputDiv} >
         <input {...input} disabled={disCountByCategory} value={item.disCount} className={style.input} type="number"/> % 
+        <input {...input} input={index} type="hidden"/>
     </div> 
   )
 
@@ -94,8 +95,7 @@ const CheckboxPrice = ({
                     return ( 
                         <div className={style.disCount} key={index}>
                         <Field name={"disCountEnable"+ item.CDTcodes} component={CheckboxPrice}  index={index} item={item}/>
-                        <Field name={"CategorydisCount"+ item.CDTcodes} value={item.disCount} component={DiscountInput} index={index} disCountByCategory={disCountByCategory} item={item} />
-                        <input {...input} value={index} type="hidden"/>
+                        <Field name={"CategorydisCount"+ item.CDTcodes} value={item.disCount} component={DiscountInput} index={index} disCountByCategory={disCountByCategory} item={item} />       
                         <div className={style.label}> {item.CDTcodes} Diagnostic 
                         </div>
                    </div>   )
