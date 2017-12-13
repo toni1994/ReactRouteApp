@@ -49,6 +49,7 @@
     border-style: groove;
     border-width: 1px;
     text-align: center;
+    align-items: center;
 
 }
 
@@ -65,9 +66,19 @@
 .discount{
     flex-direction: row;
     width: 25%;
+    text-align: -webkit-center;
 }
 
 .newValue{
     flex-direction: row;
     width: 25%;
+}
+
+.form{
+    display: flex;
+    width: 100%;
+}
+
+.input{
+    text-align: center;
 }

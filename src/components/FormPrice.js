@@ -188,10 +188,12 @@ const CheckboxPrice = ({
   )
 
 let PriceList = (props) => (
-            <div className={style.disCountTable} >
-            <form>
+          
+            <form className={style.form}>
+                <div className={style.disCountTable} >
             <Field name="disCountByCategory" disCountByCategory={!props.disCountByCategory} flatDisCount={props.flatDisCount} component={disCountCategory}/>
             <FieldArray name="price" component={priceList} priceList={props.priceList} disCountByCategory={props.disCountByCategory} />
+                </div>
             <div className={style.priceTable}>
                 <div className={style.priceTableRow}>
                     <div className={style.code}> Common CDT Codes </div>
@@ -202,7 +204,7 @@ let PriceList = (props) => (
                 <FieldArray name="price" component={tablePriceList} flatDisCount={props.flatDisCount} priceList={props.priceList} disCountByCategory={props.disCountByCategory} />  
                </div>
             </form> 
-            </div>
+           
 )
 
 
