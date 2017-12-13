@@ -28,16 +28,6 @@ class PriceList extends React.Component{
         <MuiThemeProvider>
             <div className={style.priceContainer}>
              <FormPrice priceList={this.props.priceList} />
-             <div className={style.priceTable}>
-                <div className={style.priceTableRow}>
-                    <div className={style.code}> Common CDT Codes </div>
-                    <div className={style.officeFree} > Office free [$] </div> 
-                    <div className={style.discount}>  Discount [%] </div>
-                    <div className={style.newValue}> New Value [$] </div>
-                </div>
-                <FormPriceTable/>
-               
-             </div>
             </div>
     </MuiThemeProvider>
 )}

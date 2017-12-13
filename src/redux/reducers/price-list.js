@@ -7,7 +7,7 @@ const initialState = {
         CDTcodes: 100,
         officeFree: 230,
         disCountEnable: true,
-        disCount: 5
+        disCount: 5,
     },
     {
         CDTcodes: 101,
@@ -42,7 +42,7 @@ const initialState = {
     {
         CDTcodes: 106,
         officeFree: 950,
-        disCountEnable: false,
+        disCountEnable: true,
         disCount: 25
     },
 ]
@@ -64,8 +64,8 @@ export default function reducer(state = initialState , action){
                     ...state.product.slice(idUpdate + 1, state.product.length), 
                 ]
             } 
-            case "@@redux-form/CHANGE":
-            /*if(action.meta.field === "AlldisCount")
+            /*case "@@redux-form/CHANGE":
+            if(action.meta.field === "AlldisCount")
             return {
                 ...state,
                 flatDisCount: action.payload,
