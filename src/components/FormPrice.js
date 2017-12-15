@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Checkbox from 'material-ui/Checkbox';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
-import { reduxForm, Field, FieldArray} from 'redux-form';
+import { reduxForm, Field, FieldArray, formValueSelector } from 'redux-form';
 import style from '../styles/PriceList.scss';
 
 const officeFree = ({
@@ -16,7 +16,7 @@ const officeFree = ({
   officeFree
 }) => (
   <div  className={style.inputDiv} >
-      <input {...input}  className={style.input} type="text"/> 
+      <input {...input}  className={style.input} type="text"/>
   </div> 
 )
 
@@ -57,10 +57,11 @@ const disCount = ({
   ...props,
   priceList,
   disCountByCategory,
-  flatDisCount
+  flatDisCount,
+  productDisCount
 }) => (
   <div className={style.discount}>
-  {!disCountByCategory ? <div className={style.discount}>  {item.disCount}  </div> : <div className={style.discount}>  {flatDisCount}  </div>}
+  {!disCountByCategory ? <div className={style.discount}>  {3}  </div> : <div className={style.discount}>  {flatDisCount}  </div>}
   </div>
 )
 
@@ -73,15 +74,17 @@ const tablePriceList = ({
   ...props,
   priceList,
   disCountByCategory,
-  flatDisCount
+  flatDisCount,
+  product
 }) => (
   <div>
        { priceList.map((item,index)=>{
                   return (  <div className={style.priceTableRow} key={index}>
+                
                       <Field name={`product[${index}].CDTcodes`} officeFree={item.officeFree} component={CDTcodes} index={index} item={item}/>
                       <div className={style.officeFree} >  <Field name={`product[${index}].officeFree`} officeFree={item.officeFree} component={officeFree} index={index} item={item}/>  </div>
                       <Field name={`product[${index}].disCountEnable`} officeFree={item.officeFree} component={disCountEnable} index={index} item={item.officeFree}/>
-                      <Field name={`product[${index}].disCount`} priceList={item.priceList}  disCountByCategory={disCountByCategory} flatDisCount={flatDisCount} component={disCount} index={index} item={item}/>
+                      <Field name={`product[${index}].disCount`} productDisCount={product} priceList={item.priceList}  disCountByCategory={disCountByCategory} flatDisCount={flatDisCount} component={disCount} index={index} item={item}/>
                       {!disCountByCategory ?  <div className={style.newValue}>  {(item.officeFree - (item.officeFree * item.disCount * 0.01)).toFixed(2)}  </div> :
                         <div className={style.newValue}>  {(item.officeFree - (item.officeFree * flatDisCount * 0.01)).toFixed(2)}  </div>}
                   </div> )})}
@@ -117,7 +120,7 @@ const CheckboxPrice = ({
     disCountByCategory
   }) => (
     <div  className={style.inputDiv} >
-        <input {...input} disabled={!disCountByCategory} className={style.input} type="number"/> % 
+        <input {...input} disabled={disCountByCategory} className={style.input} type="number"/> % 
     </div> 
   )
 
@@ -133,7 +136,7 @@ const CheckboxPrice = ({
     flatDisCount
   }) => (
     <div  className={style.inputDiv} >
-        <input {...input} disabled={disCountByCategory} className={style.input} type="number"/> % 
+        <input {...input} disabled={!disCountByCategory} className={style.input} type="number"/> % 
     </div> 
   )
 
@@ -148,14 +151,14 @@ const CheckboxPrice = ({
     flatDisCount
   }) => (
     <div className={style.disCount}>
-            <RadioButtonGroup  {...input} name="shipSpeed" defaultSelected={false} onChange={(event, value) => input.onChange(value)}>
+            <RadioButtonGroup  {...input} name="shipSpeed" defaultSelected={true} onChange={(event, value) => input.onChange(value)}>
             <RadioButton
-                value={false}
+                value={true}
                 inputStyle = {styles.radioBottun}
                 label= {<div> <Field name="flatDisCount" disCountByCategory={disCountByCategory} flatDisCount={flatDisCount}  component={DiscountAllInput}/> Flat Discount Across All Procedure Categories </div>}
             />
             <RadioButton
-                value={true}
+                value={false}
                 label="Discount by category"
             />
              </RadioButtonGroup>    
@@ -191,7 +194,7 @@ let PriceList = (props) => (
           
             <form className={style.form}>
                 <div className={style.disCountTable} >
-            <Field name="disCountByCategory" disCountByCategory={!props.disCountByCategory} flatDisCount={props.flatDisCount} component={disCountCategory}/>
+            <Field name="disCountByCategory" disCountByCategory={props.disCountByCategory} flatDisCount={props.flatDisCount} component={disCountCategory}/>
             <FieldArray name="price" component={priceList} priceList={props.priceList} disCountByCategory={props.disCountByCategory} />
                 </div>
             <div className={style.priceTable}>
@@ -201,7 +204,8 @@ let PriceList = (props) => (
                     <div className={style.discount}>  Discount [%] </div>
                     <div className={style.newValue}> New Value [$] </div>
                 </div>
-                <FieldArray name="price" component={tablePriceList} flatDisCount={props.flatDisCount} priceList={props.priceList} disCountByCategory={props.disCountByCategory} />  
+                {console.log(props.product)}
+              <FieldArray name="price" component={tablePriceList} product={props.product} flatDisCount={props.flatDisCount} priceList={props.priceList} disCountByCategory={props.disCountByCategory} />  
                </div>
             </form> 
            
@@ -224,14 +228,19 @@ PriceList = reduxForm({
     form: 'priceList',
   })(PriceList) 
 
+const selector = formValueSelector('priceList')
 PriceList = connect(
-    state => ({
-        priceList : state.PriceList.product,
-        disCountByCategory: state.PriceList.disCountByCategory,
-        flatDisCount: state.PriceList.flatDisCount,
-        initialValues: state.PriceList
-        
-    }),
+    state => {
+    const flatDisCount = selector(state, 'flatDisCount')
+    const disCountByCategory = selector(state, 'disCountByCategory')  
+    const product = selector(state, 'product')
+    console.log(product)    
+    return {
+      priceList : state.PriceList.product,
+      flatDisCount,
+      disCountByCategory,
+      product,
+      initialValues: state.PriceList}}
   )(PriceList)
   
 export default PriceList;

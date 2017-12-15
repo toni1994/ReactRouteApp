@@ -5,7 +5,6 @@ import { bindActionCreators } from 'redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import style from '../styles/PriceList.scss';
 import FormPrice from './FormPrice';
-import FormPriceTable from './FormPriceTable';
 
 class PriceList extends React.Component{
     constructor(props){
