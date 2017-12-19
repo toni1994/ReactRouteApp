@@ -61,7 +61,7 @@ const disCount = ({
   productDisCount
 }) => (
   <div className={style.discount}>
-  {!disCountByCategory ? <div className={style.discount}>  {3}  </div> : <div className={style.discount}>  {flatDisCount}  </div>}
+  {!disCountByCategory ? <div className={style.discount}>  {productDisCount.disCount}  </div> : <div className={style.discount}>  {flatDisCount}  </div>}
   </div>
 )
 
@@ -78,13 +78,12 @@ const tablePriceList = ({
   product
 }) => (
   <div>
-       { priceList.map((item,index)=>{
-                  return (  <div className={style.priceTableRow} key={index}>
-                
+       {disCountByCategory === undefined ? 1 : product.map((item,index)=>{
+                  return (  item.disCountEnable !== true ? null : <div className={style.priceTableRow} key={index}>
                       <Field name={`product[${index}].CDTcodes`} officeFree={item.officeFree} component={CDTcodes} index={index} item={item}/>
                       <div className={style.officeFree} >  <Field name={`product[${index}].officeFree`} officeFree={item.officeFree} component={officeFree} index={index} item={item}/>  </div>
                       <Field name={`product[${index}].disCountEnable`} officeFree={item.officeFree} component={disCountEnable} index={index} item={item.officeFree}/>
-                      <Field name={`product[${index}].disCount`} productDisCount={product} priceList={item.priceList}  disCountByCategory={disCountByCategory} flatDisCount={flatDisCount} component={disCount} index={index} item={item}/>
+                      <Field name={`product[${index}].disCount`} productDisCount={disCountByCategory ?  1 : product[index]} priceList={item.priceList}  disCountByCategory={disCountByCategory} flatDisCount={flatDisCount} component={disCount} index={index} item={item}/>
                       {!disCountByCategory ?  <div className={style.newValue}>  {(item.officeFree - (item.officeFree * item.disCount * 0.01)).toFixed(2)}  </div> :
                         <div className={style.newValue}>  {(item.officeFree - (item.officeFree * flatDisCount * 0.01)).toFixed(2)}  </div>}
                   </div> )})}
@@ -204,7 +203,6 @@ let PriceList = (props) => (
                     <div className={style.discount}>  Discount [%] </div>
                     <div className={style.newValue}> New Value [$] </div>
                 </div>
-                {console.log(props.product)}
               <FieldArray name="price" component={tablePriceList} product={props.product} flatDisCount={props.flatDisCount} priceList={props.priceList} disCountByCategory={props.disCountByCategory} />  
                </div>
             </form> 
@@ -234,7 +232,6 @@ PriceList = connect(
     const flatDisCount = selector(state, 'flatDisCount')
     const disCountByCategory = selector(state, 'disCountByCategory')  
     const product = selector(state, 'product')
-    console.log(product)    
     return {
       priceList : state.PriceList.product,
       flatDisCount,
